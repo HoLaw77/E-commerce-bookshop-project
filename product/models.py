@@ -4,12 +4,12 @@ from django.db import models
 
 
 class Product(models.Model):
-
-COVER_CHOICE = (
-    (1, 'Hardback'),
-    (2, 'Paperback'),
-    (3, 'Softcover'),
-)
+    """model to store book products"""
+    COVER_CHOICE = (
+        (1, 'Hardback'),
+        (2, 'Paperback'),
+        (3, 'Softcover'),
+    )
     name = models.CharField(max_length=200, null=True, blank=True)
     publisher = models.CharField(max_length=100, null=True, blank=True)
     author = models.CharField(max_length=100, null=True, blank=True)
@@ -20,8 +20,11 @@ COVER_CHOICE = (
     language = models.ForeignKey(Language, on_delete=models.CASCADE)
     price = models.IntegerField(max_digit=4)
 
+    def __str__(self):
+        return self.name    
 
 class Language(models.Model):
+    """model to store language option for books"""
     LANGUAGE_CHOICE = (
         (1, 'English'),
         (2, 'French'),
@@ -36,6 +39,7 @@ class Language(models.Model):
 
 
 class Category(models.Model):
+    """model to store cateogy of books"""
     GENRE_CHOICE = (
         (1, 'Romance fiction'),
         (2, 'Thriller fiction'),
@@ -62,3 +66,12 @@ class Category(models.Model):
 
     genre = models.CharField(choice='GENRE_CHOICE', default=1)
     region = models.CharField(choice='REGION_CHOICE', default=1)
+    
+    def __str__(self):
+        return self.name
+
+
+class ProductImage(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    url =  models.URLField(max_length=1024, null=True, blank=True)
+    image = models.ImageField(null=True, blank=True)
