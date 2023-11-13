@@ -16,8 +16,18 @@ class Profile(models.Model):
     country = CountryField()
     interest = models.ManytoManyField(Book_Interest)
 
+    def __str__(self):
+        return self.first_name 
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
 class Book_Interest(model.Model):
     book_name = models.CharField(max_length=1000, null=True, blank=True)
     description = models.TextField(null= True, blank=True)
 
-class 
+    def __str__(self):
+        return self.book_name
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)

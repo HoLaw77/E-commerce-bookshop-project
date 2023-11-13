@@ -1,5 +1,5 @@
 from django.db import models
-
+from cloudinary.models import CloudinaryField
 # Create your models here.
 
 
@@ -18,7 +18,7 @@ class Product(models.Model):
     cover = models.CharField(choice='COVER_CHOICE', default=1)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     language = models.ForeignKey(Language, on_delete=models.CASCADE)
-    price = models.IntegerField(max_digit=4)
+    price = models.DecimalField(max_digit=10, decimal_place=2, null=False, default=0)
 
     def __str__(self):
         return self.name    
@@ -37,6 +37,8 @@ class Language(models.Model):
     language = models.CharField(choice='LANGUAGE_CHOICE', default=1)
     note = models.CharField()
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
 class Category(models.Model):
     """model to store cateogy of books"""
@@ -67,11 +69,14 @@ class Category(models.Model):
     genre = models.CharField(choice='GENRE_CHOICE', default=1)
     region = models.CharField(choice='REGION_CHOICE', default=1)
     
-    def __str__(self):
-        return self.name
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
 
 class ProductImage(models.Model):
+    """model to store product image"""
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     url =  models.URLField(max_length=1024, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True)
+    image = CloudinaryField('product_image', folder='product_images', null=True, blank=True)
+    alt_text = models.CharField(max_length=1000, null=True, blank=True)
+    image_url = models.URLField(max_length=1024, null=True, blank=True)
