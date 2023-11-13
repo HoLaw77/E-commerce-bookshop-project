@@ -2,16 +2,17 @@ from django.db import models
 
 # Create your models here.
 
+
+class Product(models.Model):
+
 COVER_CHOICE = (
     (1, 'Hardback'),
     (2, 'Paperback'),
     (3, 'Softcover'),
 )
-class Product(models.Model):
     name = models.CharField(max_length=200, null=True, blank=True)
     publisher = models.CharField(max_length=100, null=True, blank=True)
-    author_first_name = models.CharField(max_length=100, null=True, blank=True)
-    author_last_name = models.CharField(max_length=100, null=True, blank=True)
+    author = models.CharField(max_length=100, null=True, blank=True)
     year_of_publication = models.PositiveIntegerField(default=current_year(), validators=[MinValueValidator(1000), max_value_current_year])
     number_of_pages = models.IntegerField(MinValueValidator= 1, MaxValueValidator=1000)
     cover = models.CharField(choice='COVER_CHOICE', default=1)
@@ -19,5 +20,45 @@ class Product(models.Model):
     language = models.ForeignKey(Language, on_delete=models.CASCADE)
     price = models.IntegerField(max_digit=4)
 
-class Language
-    
+
+class Language(models.Model):
+    LANGUAGE_CHOICE = (
+        (1, 'English'),
+        (2, 'French'),
+        (3, 'German'),
+        (4, 'Japanese'),
+        (5, 'Chinese'),
+        (6, 'Russian'),
+        (7, 'Greek')
+    )    
+    language = models.CharField(choice='LANGUAGE_CHOICE', default=1)
+    note = models.CharField()
+
+
+class Category(models.Model):
+    GENRE_CHOICE = (
+        (1, 'Romance fiction'),
+        (2, 'Thriller fiction'),
+        (3, 'Detective fiction'),
+        (4, 'Classic'),
+        (5, 'Nonfiction'),
+        (6, 'Sci-fi/Fantasy'),
+        (7, 'Poetry'),
+        (8, 'Science'),
+        (9, 'Social Science'),
+        (10, 'Philosophy'),
+    )
+
+    REGION_CHOICE = (
+        (1, 'United States'),
+        (2, 'United Kingdom'),
+        (3, 'Germany')
+        (4, 'France'),
+        (5, 'Japan'),
+        (6, 'Russia'),
+        (7, 'Greece'),
+        (8, 'China'),
+    ) 
+
+    genre = models.CharField(choice='GENRE_CHOICE', default=1)
+    region = models.CharField(choice='REGION_CHOICE', default=1)
