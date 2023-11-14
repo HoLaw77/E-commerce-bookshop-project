@@ -37,7 +37,7 @@ class Language(models.Model):
         (7, 'Greek')
     )    
     language = models.CharField(choice='LANGUAGE_CHOICE', default=1)
-    note = models.CharField()
+    note = models.CharField(max_length=1000, null=True, blank=True)
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -80,7 +80,12 @@ class Category(models.Model):
 class ProductImage(models.Model):
     """model to store product image"""
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    url =  models.URLField(max_length=1024, null=True, blank=True)
     image = CloudinaryField('product_image', folder='product_images', null=True, blank=True)
     alt_text = models.CharField(max_length=1000, null=True, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
+
+    def__str__(self):
+        return self.product.name
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
