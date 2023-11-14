@@ -1,5 +1,6 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
+from isbn_field import ISBNField
 # Create your models here.
 
 
@@ -15,6 +16,7 @@ class Product(models.Model):
     author = models.CharField(max_length=100, null=True, blank=True)
     year_of_publication = models.PositiveIntegerField(default=current_year(), validators=[MinValueValidator(1000), max_value_current_year])
     number_of_pages = models.IntegerField(MinValueValidator= 1, MaxValueValidator=1000)
+    ISBN = models.ISBNField()
     cover = models.CharField(choice='COVER_CHOICE', default=1)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     language = models.ForeignKey(Language, on_delete=models.CASCADE)
