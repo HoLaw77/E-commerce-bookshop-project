@@ -55,6 +55,8 @@ class Category(models.Model):
         (8, 'Science'),
         (9, 'Social Science'),
         (10, 'Philosophy'),
+        (11, 'Gender'),
+        (12, 'Translated Fiction')
     )
 
     REGION_CHOICE = (
