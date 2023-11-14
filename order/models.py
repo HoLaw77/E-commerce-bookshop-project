@@ -5,6 +5,7 @@ from django.countries import CountryField
 
 
 class Order(models.Model):
+    """model to store Order with customer details"""
     order_number = models.CharField(max_length=64, null=False, editable=False)
     full_name = models.CharField(max_length=100, null=True, blank=True)
     address = AddressField()

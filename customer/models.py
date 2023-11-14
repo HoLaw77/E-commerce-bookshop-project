@@ -6,6 +6,7 @@ from django_countries import CountryField,
 
 
 class Profile(models.Model):
+    """model to store customer profule information"""
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -23,6 +24,7 @@ class Profile(models.Model):
         super().save(*args, **kwargs)
 
 class Book_Interest(model.Model):
+    """model to store customer interest in books"""
     book_name = models.CharField(max_length=1000, null=True, blank=True)
     description = models.TextField(null= True, blank=True)
 
