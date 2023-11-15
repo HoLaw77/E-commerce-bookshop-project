@@ -18,8 +18,8 @@ class Product(models.Model):
     number_of_pages = models.IntegerField(MinValueValidator= 1, MaxValueValidator=1000)
     ISBN = models.ISBNField()
     cover = models.CharField(choice='COVER_CHOICE', default=1)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    language = models.ForeignKey(Language, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=true blank = True)
+    language = models.ForeignKey(Language, on_delete=models.CASCADE, null=true blank = True)
     price = models.DecimalField(max_digit=10, decimal_place=2, null=False, default=0)
 
     def __str__(self):
@@ -83,6 +83,9 @@ class ProductImage(models.Model):
     image = CloudinaryField('product_image', folder='product_images', null=True, blank=True)
     alt_text = models.CharField(max_length=1000, null=True, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
+    default_image = models.BooleanField(
+        default=False,
+    )
 
     def__str__(self):
         return self.product.name
