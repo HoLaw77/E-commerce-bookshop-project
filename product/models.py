@@ -100,3 +100,13 @@ class ProductImage(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
+        if self.default_image:
+            for image in self.product.images.all().exclude(id=self.id):
+                image.default_image = False
+                image.save()
+
+    @property
+    def image_url(self):
+        if self.image:
+            return self.image.url
+        return 'static/images/default_product_image.png'

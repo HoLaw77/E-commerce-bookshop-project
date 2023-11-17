@@ -19,3 +19,19 @@ class Order(models.Model):
     def __str__(self):
         return self.order_number
 
+class OrderItem(models.Model):
+    """Model for OrderItem."""
+    order = models.ForeignKey(
+        Order,
+        on_delete=models.CASCADE,
+        related_name='order_item'
+    )
+    product_inventory = models.ForeignKey(
+        ProductInventory,
+        on_delete=models.CASCADE,
+        related_name='order_item_inventory'
+    )
+    quantity = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return str(self.id)
