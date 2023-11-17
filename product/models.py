@@ -3,34 +3,6 @@ from cloudinary.models import CloudinaryField
 from isbn_field import ISBNField
 # Create your models here.
 
-
-class Product(models.Model):
-    """model to store book products"""
-    COVER_CHOICE = (
-        (1, 'Hardback'),
-        (2, 'Paperback'),
-        (3, 'Softcover'),
-    )
-    name = models.CharField(max_length=200, null=True, blank=True)
-    publisher = models.CharField(max_length=100, null=True, blank=True)
-    author = models.CharField(max_length=100, null=True, blank=True)
-    year_of_publication = models.PositiveIntegerField(
-        default=current_year(),
-        validators=[MinValueValidator(1000), max_value_current_year])
-    number_of_pages = models.IntegerField(
-        MinValueValidator= 1, MaxValueValidator=1000)
-    ISBN = models.ISBNField()
-    cover = models.CharField(choice='COVER_CHOICE', default=1)
-    category = models.ForeignKey(
-        Category, on_delete=models.CASCADE, null=true, blank = True)
-    language = models.ForeignKey(
-        Language, on_delete=models.CASCADE, null=true, blank = True)
-    price = models.DecimalField(
-        max_digit=10, decimal_place=2, null=False, default=0)
-
-    def __str__(self):
-        return self.name    
-
 class Language(models.Model):
     """model to store language option for books"""
     LANGUAGE_CHOICE = (
@@ -40,9 +12,9 @@ class Language(models.Model):
         (4, 'Japanese'),
         (5, 'Chinese'),
         (6, 'Russian'),
-        (7, 'Greek')
+        (7, 'Greek'),
     )    
-    language = models.CharField(choice='LANGUAGE_CHOICE', default=1)
+    language = models.IntegerField(choices=LANGUAGE_CHOICE, default=1)
     note = models.CharField(max_length=1000, null=True, blank=True)
 
     def save(self, *args, **kwargs):
@@ -62,13 +34,13 @@ class Category(models.Model):
         (9, 'Social Science'),
         (10, 'Philosophy'),
         (11, 'Gender'),
-        (12, 'Translated Fiction')
+        (12, 'Translated Fiction'),
     )
 
     REGION_CHOICE = (
         (1, 'United States'),
         (2, 'United Kingdom'),
-        (3, 'Germany')
+        (3, 'Germany'),
         (4, 'France'),
         (5, 'Japan'),
         (6, 'Russia'),
@@ -76,11 +48,39 @@ class Category(models.Model):
         (8, 'China'),
     ) 
 
-    genre = models.CharField(choice='GENRE_CHOICE', default=1)
-    region = models.CharField(choice='REGION_CHOICE', default=1)
+    genre = models.IntegerField(choices=GENRE_CHOICE, default=1)
+    region = models.IntegerField(choices=REGION_CHOICE, default=1)
     
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
+
+
+class Product(models.Model):
+    """model to store book products"""
+    COVER_CHOICE = (
+        (1, 'Hardback'),
+        (2, 'Paperback'),
+        (3, 'Softcover'),
+    )
+    YEAR_CHOICE = zip(range(1000, 2023), range(1000, 2023))
+    name = models.CharField(max_length=200, null=True, blank=True)
+    publisher = models.CharField(max_length=100, null=True, blank=True)
+    author = models.CharField(max_length=100, null=True, blank=True)
+    year_of_publication = models.IntegerField(choices= YEAR_CHOICE, default = 1)
+    number_of_pages = models.IntegerField(null=True, blank=True)
+    isbn = ISBNField()
+    cover = models.IntegerField(choices= COVER_CHOICE, default=1)
+    category = models.ForeignKey(
+        Category, on_delete=models.CASCADE, null=True, blank = True)
+    language = models.ForeignKey(
+        Language, on_delete=models.CASCADE, null=True, blank = True)
+    price = models.DecimalField(
+        max_digits=10, decimal_places=2, null=False, default=0.00)
+
+    def __str__(self):
+
+        return self.name    
+
 
 
 class ProductImage(models.Model):
@@ -95,7 +95,7 @@ class ProductImage(models.Model):
         default=False,
     )
 
-    def__str__(self):
+    def __str__(self):
         return self.product.name
 
     def save(self, *args, **kwargs):
