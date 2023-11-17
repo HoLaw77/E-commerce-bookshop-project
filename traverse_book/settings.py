@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-holaw77-ecommercebooksh-51hyig88fec.ws-eu106.gitpod.io', 'traverse-book.heroku.com', 'localhost']
+ALLOWED_HOSTS = ['8000-holaw77-ecommercebooksh-51hyig88fec.ws-eu106.gitpod.io', 'traverse-book-6b6199e25c96.herokuapp.com', 'https://traverse-book-6b6199e25c96.herokuapp.com' 'localhost']
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
