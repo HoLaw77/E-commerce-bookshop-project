@@ -22,9 +22,9 @@ class Product(models.Model):
     ISBN = models.ISBNField()
     cover = models.CharField(choice='COVER_CHOICE', default=1)
     category = models.ForeignKey(
-        Category, on_delete=models.CASCADE, null=true blank = True)
+        Category, on_delete=models.CASCADE, null=true, blank = True)
     language = models.ForeignKey(
-        Language, on_delete=models.CASCADE, null=true blank = True)
+        Language, on_delete=models.CASCADE, null=true, blank = True)
     price = models.DecimalField(
         max_digit=10, decimal_place=2, null=False, default=0)
 

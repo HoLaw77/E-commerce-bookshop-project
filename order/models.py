@@ -1,6 +1,6 @@
 from django.db import models
-from django.address import AddressField
-from django.countries import CountryField
+from address.models import AddressField
+from django_countries.fields import CountryField
 # Create your models here
 
 
@@ -26,11 +26,7 @@ class OrderDetail(models.Model):
         on_delete=models.CASCADE,
         related_name='order_detail'
     )
-    product_inventory = models.ForeignKey(
-        ProductInventory,
-        on_delete=models.CASCADE,
-        related_name='order_item_inventory'
-    )
+    
     quantity = models.PositiveIntegerField(default=1)
 
     def __str__(self):
