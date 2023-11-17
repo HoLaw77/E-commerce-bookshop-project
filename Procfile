@@ -1,0 +1,1 @@
+web: gunicorn traverse_book.wsgi
