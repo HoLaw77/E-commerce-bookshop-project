@@ -14,13 +14,19 @@ class Product(models.Model):
     name = models.CharField(max_length=200, null=True, blank=True)
     publisher = models.CharField(max_length=100, null=True, blank=True)
     author = models.CharField(max_length=100, null=True, blank=True)
-    year_of_publication = models.PositiveIntegerField(default=current_year(), validators=[MinValueValidator(1000), max_value_current_year])
-    number_of_pages = models.IntegerField(MinValueValidator= 1, MaxValueValidator=1000)
+    year_of_publication = models.PositiveIntegerField(
+        default=current_year(),
+        validators=[MinValueValidator(1000), max_value_current_year])
+    number_of_pages = models.IntegerField(
+        MinValueValidator= 1, MaxValueValidator=1000)
     ISBN = models.ISBNField()
     cover = models.CharField(choice='COVER_CHOICE', default=1)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=true blank = True)
-    language = models.ForeignKey(Language, on_delete=models.CASCADE, null=true blank = True)
-    price = models.DecimalField(max_digit=10, decimal_place=2, null=False, default=0)
+    category = models.ForeignKey(
+        Category, on_delete=models.CASCADE, null=true blank = True)
+    language = models.ForeignKey(
+        Language, on_delete=models.CASCADE, null=true blank = True)
+    price = models.DecimalField(
+        max_digit=10, decimal_place=2, null=False, default=0)
 
     def __str__(self):
         return self.name    
@@ -80,7 +86,9 @@ class Category(models.Model):
 class ProductImage(models.Model):
     """model to store product image"""
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    image = CloudinaryField('product_image', folder='product_images', null=True, blank=True)
+    image = CloudinaryField(
+        'product_image', folder='product_images', null=True, blank=True
+    )
     alt_text = models.CharField(max_length=1000, null=True, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     default_image = models.BooleanField(
