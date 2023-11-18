@@ -35,7 +35,51 @@
     <title>Traverse Book</title>
 </head>
 <body>
+    <header class="container">
+        <div class="row bg-yellow">
+            <div class="col-12 col-lg-3 text-center">
+                <a href="{% url 'home' %}" class="nav-link main-logo-link">
+                    <h1>Traverse Book</h1>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-4">
+                <a href="/">
+                    <h3>Product</h3>
+                </a>
+            </div>
+        </div>
+        {% if request.user.is_authenticated %}
+        <div class="row">
+            <div class="col-12 col-lg-4">
+                <a href="/">
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </div>
+            <div class="row">
+                <div class="col-12 col-lg-4">
+                    <a href="/">
+                        <h3>View your order</h3>
+                    </a>
+                </div>
+            </div>
+        </div>   
+        {% else %}
+        <div class="row">
+            <div class="col-12 col-lg-4">
+                <a href="/">
+                    <h3>Login/Sign up</h3>
+                </a>
+            </div>
+        {% endif %}
+    </header>
 {% block content %}
 {% endblock %} 
+
+<footer>
+
+</footer>
 </body>
 </html>
