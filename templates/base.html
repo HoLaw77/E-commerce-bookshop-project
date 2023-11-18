@@ -39,42 +39,46 @@
     <title>Traverse Book</title>
 </head>
 <body>
-    <header class="container-fluid fixed-top">
+    <nav class="container-fluid">
         <div id="myTopnav" class="row bg-warning">
-            <div class="col-12 col-lg-3 text-center">
+            <div class="col-12 col-lg-4 text-center">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
                     <h1 class="text-center">Traverse Book</h1>
                 </a>
             </div>
-
-            <div class="col-12 col-lg-4">
+            <div class="col-12 col-lg-2 my-auto mx-auto">
+                <a href="{% url 'home' %}">
+                    <p>Home</p>
+                </a>
+            </div>
+            <div class="col-12 col-lg-2 my-auto mx-auto">
                 <a href="/">
-                    <h3>Product</h3>
+                    <p>Books</p>
                 </a>
             </div>
 
         {% if request.user.is_authenticated %}
-            <div class="col-12 col-lg-4">
+            <div class="col-12 col-lg-2 my-auto mx-auto">
                 <a href="/">
-                    <h3>Logout</h3>
+                    <p>Logout</p>
                 </a>
             </div>
         
-            <div class="col-12 col-lg-4">
+            <div class="col-12 col-lg-4 my-auto mx-auto">
                 <a href="/">
-                    <h3>View your order</h3>
+                    <p>View your order</p>
                 </a>
             </div>
             
         </div>   
         {% else %}
-            <div class="col-12 col-lg-4">
+            <div class="col-12 col-lg-4 my-auto mx-auto">
                 <a href="/">
-                    <h3>Login/Sign up</h3>
+                    <p>Login/Sign up</p>
                 </a>
             </div>
         {% endif %}
-    </header>
+    </nav>
 
     {% if messages %}
         <div class="message-container"></div>
@@ -83,7 +87,7 @@
 {% block pageheader %}
 {% endblock %}
 <main>
-
+<!-- I am talking about this block -->
 {% block content %}
 {% endblock %} 
 </main>
