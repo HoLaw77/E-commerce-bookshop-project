@@ -17,7 +17,10 @@
                         <div class="card h-200 border-0">
                             
                             <div class="card-body">
-                                <h5 class="md-0">{{book.name}}</h5>
+                                <a href="{% url 'book_detail' book.id % }">
+
+                                    <h5 class="md-0">{{book.name}}</h5>
+                                </a>
                             </div>
                             <div class="card-body">
                                 <p>Author: {{book.author}}</p>

@@ -9,3 +9,11 @@ def show_book(request):
         'books': books
     }
     return render(request, 'book/book.html', context)
+
+def book_detail(request, book_id):
+
+    book = get_object_or_404(Product, id=book_id)
+    context = {
+        'book': book
+    }
+    return render (request, 'book/book_detail.html', context)
