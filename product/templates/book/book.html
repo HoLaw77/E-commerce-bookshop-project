@@ -2,4 +2,53 @@
 {% load static %}
 
 {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            
+        </div>
+
+        <div class="row">
+            <div class="books-container">
+                <div class="row">
+                    {% for book in books %}
+                    <div class="col-sm-5, col-md-4, col-xl-3">
+                        <div class="card h-200 border-0">
+
+                            <div class="card-body">
+                                <h5 class="md-0">{{book.name}}</h5>
+                            </div>
+                            <div class="card-body">
+                                <p>Author: {{book.author}}</p>
+                            </div>
+                            <div class="card-body">
+                                <p>Publisher: {{book.publisher}}</p>
+                            </div>
+                            <div class="card-body">
+                                <p>
+                                Year of Publication: {{book.year_of_publication}}
+                                </p>
+                            </div>
+                            <div class="card-body">
+                                <p>
+                                Language: {{book.language.language}}
+                                </p>
+                            </div>
+                            
+                            <div class="card-body">
+                                <p>Price: ${{book.price}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
 {% endblock %}
