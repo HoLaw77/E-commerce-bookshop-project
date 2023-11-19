@@ -18,5 +18,20 @@ i{
 }
 
 .main{
-    background: url('/media/image/sea-coast-water-nature-grass-sand-127347-pxhere.com.jpg');
+    background: url('/media/sea-coast-water-nature-grass-sand-127347-pxhere.com.jpg');
+}
+
+
+.social-media-text {
+    color: black;
+}
+
+.social-media-icon {
+    text-align: center;
+}
+
+.social-media-icon>li {
+    display: inline;
+    padding: 10%;
+    padding-top: 20px;
 }
