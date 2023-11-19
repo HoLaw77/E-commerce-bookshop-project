@@ -15,12 +15,27 @@
 
 i{
     color: black;
+    font-size: 100%;
 }
 
-.main{
-    background: url('/media/sea-coast-water-nature-grass-sand-127347-pxhere.com.jpg');
+main{
+    background: url('../image/ocean-book-glass-vehicle-sunglass-bag-105434-pxhere.com.jpg') no-repeat center;
+    background-image: cover;
+    height: 700px;
 }
 
+.index-text{
+    margin-top: 550px;
+    margin-left: 650px;
+    font-family: 'Gideon Roman';
+    color: black;
+    background-color: white;
+}
+
+.index-text:hover{
+    color: white;
+    background-color: black;
+}
 
 .social-media-text {
     color: black;
