@@ -86,7 +86,7 @@ class Product(models.Model):
 
 class ProductImage(models.Model):
     """model to store product image"""
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, related_name='images', on_delete=models.CASCADE)
     image = CloudinaryField(
         'product_image', folder='product_images', null=True, blank=True
     )
