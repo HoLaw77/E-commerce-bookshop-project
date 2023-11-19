@@ -1,4 +1,22 @@
 .title-text {
     font-family: 'Gideon Roman';
-    background-color: red;
+    color: black;
+}
+
+.title-text > a {
+    text-decoration: none;
+
+}
+
+.nav-button:hover{
+    color: white;
+    background-color: black;
+}
+
+i{
+    color: black;
+}
+
+.main{
+    background: url('/media/image/sea-coast-water-nature-grass-sand-127347-pxhere.com.jpg');
 }

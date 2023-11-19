@@ -27,7 +27,7 @@
     {% endblock %}
 
     {% block corejs %}
-    <script src="https://kit.fontawesome.com/e9c73d7092.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/086085115e.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -42,7 +42,7 @@
 </head>
 <body>
     <nav class="container-fluid">
-        <div id="myTopnav" class="row bg-warning">
+        <div id="myTopnav" class="row">
             <div class="col-12 col-lg-4 text-center">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
                     <h1 class="title-text">Traverse Book</h1>
@@ -50,25 +50,35 @@
             </div>
             <div class="col-12 col-lg-2 my-auto mx-auto">
                 <a href="{% url 'home' %}">
-                    <p>Home</p>
+                    <p class="title-text nav-button">Home
+
+                        <i class="fa-solid fa-house"></i>
+                    </p>
                 </a>
             </div>
             <div class="col-12 col-lg-2 my-auto mx-auto">
                 <a href="/">
-                    <p>Books</p>
+                    <p class="title-text nav-button">Books
+                        <i class="fa-solid fa-book"></i>
+                    </p>
+
                 </a>
             </div>
 
         {% if request.user.is_authenticated %}
             <div class="col-12 col-lg-2 my-auto mx-auto">
                 <a href="/">
-                    <p>Logout</p>
+                    <p class="title-text nav-button">Logout
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </p>
                 </a>
             </div>
         
-            <div class="col-12 col-lg-4 my-auto mx-auto">
+            <div class="col-12 col-lg-2 my-auto mx-auto">
                 <a href="/">
-                    <p>View your order</p>
+                    <p class="title-text nav-button">View your order
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </p>
                 </a>
             </div>
             
@@ -76,7 +86,7 @@
         {% else %}
             <div class="col-12 col-lg-4 my-auto mx-auto">
                 <a href="/">
-                    <p>Login/Sign up</p>
+                    <p class="title-text">Login/Sign up</p>
                 </a>
             </div>
         {% endif %}
