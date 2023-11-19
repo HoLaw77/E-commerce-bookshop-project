@@ -5,8 +5,10 @@ from .models import Product, ProductImage, Language, Category
 def show_book(request):
 
     books = Product.objects.all()
+    images = ProductImage.objects.all()
     context = {
-        'books': books
+        'books': books,
+        'images': images,
     }
     return render(request, 'book/book.html', context)
 
