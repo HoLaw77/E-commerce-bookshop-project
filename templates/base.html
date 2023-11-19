@@ -67,7 +67,7 @@
 
         {% if request.user.is_authenticated %}
             <div class="col-12 col-lg-2 my-auto mx-auto">
-                <a href="/">
+                <a href="{% url 'account_logout' %}">
                     <p class="title-text nav-button">Logout
                         <i class="fa-solid fa-right-from-bracket"></i>
                     </p>
@@ -84,9 +84,18 @@
             
         </div>   
         {% else %}
-            <div class="col-12 col-lg-4 my-auto mx-auto">
+            <div class="col-12 col-lg-2 my-auto mx-auto">
+                <a href="{% url 'account_login' %}">
+                    <p class="title-text nav-button">Login/Sign up
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                    </p>
+                </a>
+            </div>
+            <div class="col-12 col-lg-2 my-auto mx-auto">
                 <a href="/">
-                    <p class="title-text">Login/Sign up</p>
+                    <p class="title-text nav-button">View your order
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </p>
                 </a>
             </div>
         {% endif %}
