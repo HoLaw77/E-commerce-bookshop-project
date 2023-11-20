@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+            
+        </div>
+
+        <div class="row">
+            <div class="books-container">
+                <div class="row">
+                    {% if books %}
+                    <div class="col-sm-5, col-md-4, col-xl-3, col-lg-12">
+                        <div class="card h-200 border-0">
+                            {% for image in images %}
+                                {% if image.product.name == books.name %}
+                                
+                                <div class="card h-5 w-5 border-0">
+
+                                        <img src="{{image.image_url}}">
+                                    </div>
+                                
+                                {% endif %}
+                            {% endfor %}
+                            <div class="card-body">
+                                    <h5 class="md-0">{{books.name}}</h5>
+                                
+                            </div>
+                            <div class="card-body">
+                                <p>Author: {{books.author}}</p>
+                            </div>
+                            <div class="card-body">
+                                <p>Publisher: {{books.publisher}}</p>
+                            </div>
+                            <div class="card-body">
+                                <p>
+                                Year of Publication: {{books.year_of_publication}}
+                                </p>
+                            </div>
+                            
+                            <div class="card-body">
+                                <p>Price: ${{books.price}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                    {% if books.category %}
+                        {% for category in categories%}
+                            {% if category.genre == books.category.genre %}
+                    <div class="col-sm-5, col-md-4, col-xl-3, col-lg-12">
+                        <div class="card h-200 border-0">
+                            <div class="card-body">
+                                <h5 class="md-0">Genre: {{category.genre}}</h5>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                        </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

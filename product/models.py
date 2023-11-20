@@ -52,6 +52,8 @@ class Category(models.Model):
     genre = models.IntegerField(choices=GENRE_CHOICE, default=1)
     region = models.IntegerField(choices=REGION_CHOICE, default=1)
     
+    
+
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
 

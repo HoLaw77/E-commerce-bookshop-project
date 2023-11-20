@@ -17,9 +17,12 @@
                         <div class="card h-200 border-0">
                             {% for image in images %}
                                 {% if image.product.name == book.name %}
+                                <a href="{% url 'book_detail' book.id %}">
                                 <div class="card h-5 w-5 border-0">
-                                    <img src="{{image.image_url}}">
-                                </div>
+
+                                        <img src="{{image.image_url}}">
+                                    </div>
+                                </a>
                                 {% endif %}
                             {% endfor %}
                             <div class="card-body">
