@@ -2,16 +2,32 @@
 {% load static %}
 
 {% block content %}
-<div class="container">
+<div class="container mt-4">
     <div class="row">
-            
-        </div>
+        <div class="col">
 
-        <div class="row">
+        <form method="GET" action="{% url 'book' %}">
+            <div>
+                <input class="form-control" type="text" name="q" 
+                placeholder="Search book name, author's name, publisher or ISBN">
+                <button class="form-control bg-dark text-white" type="submit">
+                    <p>
+
+                        Search
+                        <i class="fa-solid fa-magnifying-glass text-white"></i>
+                    </p>
+                </button>
+            </div>
+
+        </form>            
+        </div>
+    </div>
+
+        <div class="row mt-5 mb-4">
             <div class="books-container">
-                <div class="row">
+                <div class="row ml-5">
                     {% if books %}
-                    <div class="col-sm-5, col-md-4, col-xl-3, col-lg-12">
+                    <div class="col-sm-5, col-md-4, col-xl-3, col-lg-6 justify-content-center">
 
                         <div class="card h-200 border-0">
                             {% for image in images %}
@@ -26,38 +42,28 @@
                             {% endfor %}
                         </div>
                     </div>
-                            <div class="col-sm-5, col-md-4, col-xl-3, col-lg-12">
+                    <div class="col-sm-5, col-md-4, col-xl-3, col-lg-5 justify-content-center">
 
-                                <div class="card-body">
-                                    <h5 class="md-0">{{books.name}}</h5>
-                                    
-                                </div>
-                                <div class="card-body">
-                                    <p>Author: {{books.author}}</p>
-                                </div>
-                                <div class="card-body">
-                                    <p>Publisher: {{books.publisher}}</p>
-                                </div>
-                                <div class="card-body">
-                                    <p>
-                                        Year of Publication: {{books.year_of_publication}}
-                                    </p>
-                                </div>
-                                
-                                <div class="card-body">
-                                    <p>Page: {{books.number_of_pages}} pages</p>
-                                </div>
-                                
-                                <div class="card-body">
-                                    <p>Price: ${{books.price}}</p>
-                                </div>
-                            </div>
+                        <div class="card-body">
+                            <h5 class="md-0">{{books.name}}</h5>
+                            <p>Author: {{books.author}}</p>
+                            <p>Publisher: {{books.publisher}}</p>
+                            <p>
+                            Year of Publication: {{books.year_of_publication}}
+                            </p>
+                            <p>Page: {{books.number_of_pages}} pages</p>
+                            <p class="font-weight-bold">
+                                Price: ${{books.price}}
+
+                            </p>
+                        </div>
+                    </div>
                         
                     </div>
-                    {% endif %}
+                    
                 </div>
-                    {% if books.category %}
-                            {% for genre in category.genre %}
+                    
+                            {% for genre in categories.genre %}
                             {% if genre == books.category.genre %}
                     <div class="col-sm-5, col-md-4, col-xl-3, col-lg-12">
                         <div class="card h-200 border-0">
@@ -67,9 +73,9 @@
                             {% endfor %}
                         </div>
                         
-                    {% endif %}
+                    
                         </div>
-
+                    {% endif %}
 
                 </div>
             </div>
