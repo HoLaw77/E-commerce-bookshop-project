@@ -49,4 +49,14 @@ i{
     display: inline;
     padding: 10%;
     padding-top: 20px;
+    font-size: 200%;
+}
+
+@media only screen and (max-width: 600px)  {
+    .social-media-icon>li {
+        display: block;
+        padding: clear;
+        font-size: 200%;
+    }
+    
 }
