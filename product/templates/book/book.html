@@ -15,7 +15,13 @@
                     {% for book in books %}
                     <div class="col-sm-5, col-md-4, col-xl-3">
                         <div class="card h-200 border-0">
-                            
+                            {% for image in images %}
+                                {% if image.product.name == book.name %}
+                                <div class="card h-5 w-5 border-0">
+                                    <img src="{{image.image_url}}">
+                                </div>
+                                {% endif %}
+                            {% endfor %}
                             <div class="card-body">
                                     <h5 class="md-0">{{book.name}}</h5>
                                 
