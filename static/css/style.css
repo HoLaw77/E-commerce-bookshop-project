@@ -8,6 +8,9 @@
 
 }
 
+.nav-button {
+    font-size: 150%;
+}
 .nav-button:hover{
     color: white;
     background-color: black;
