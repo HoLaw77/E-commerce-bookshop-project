@@ -21,12 +21,12 @@
 
         </form>            
         </div>
-
+    </div>
         <div class="row mt-5 mb-4">
             <div class="books-container">
                 <div class="row">
                     {% for book in books %}
-                    <div class="col-sm-5, col-md-4, col-xl-3">
+                    <div class="col-sm-5, col-md-4, col-xl-3, col-lg-4 {% if books|length == 1 %} col-lg-12 {% endif %}">
                         <div class="card h-200 border-0">
                             {% for image in images %}
                                 {% if image.product.name == book.name %}
