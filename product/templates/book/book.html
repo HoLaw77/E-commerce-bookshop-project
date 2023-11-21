@@ -22,11 +22,42 @@
         </form>            
         </div>
     </div>
+    <div class="row">
+        <div class="col">
+            <div class="dropdown bg-secondary">
+
+                <span class="anchor">Select Genre</span>
+                <ul class="items">
+                    <li><input type="checkbox" />Romance fiction </li>
+                    <li><input type="checkbox" />Thriller fiction</li>
+                    <li><input type="checkbox" />Detective fiction </li>
+                    <li><input type="checkbox" />Classic </li>
+                    <li><input type="checkbox" />Nonfiction</li>
+                    <li><input type="checkbox" />Sci-fi/Fantasy</li>
+                    <li><input type="checkbox" />Science</li>
+                    <li><input type="checkbox" />Social Science</li>
+                    <li><input type="checkbox" />Philosophy</li>
+                    <li><input type="checkbox" />Gender</li>
+                    <li><input type="checkbox" />Translated Fiction</li>
+                    <li><input type="checkbox"/>Literary Fiction</li>
+
+                </ul>
+            </div>
+            <div class="dropdown bg-secondary">
+
+                <span class="anchor">Select Language</span>
+            </div>
+            
+            </div>
+        </div>
+
+    
         <div class="row mt-5 mb-4">
-            <div class="books-container">
+            <div class="books-container ">
                 <div class="row">
                     {% for book in books %}
-                    <div class="col-sm-5, col-md-4, col-xl-3, col-lg-4 {% if books|length == 1 %} col-lg-12 {% endif %}">
+                    <div class="col-sm-5, col-md-4, col-xl-3, col-lg-3
+                    {% if books|length == 1 %} col-lg-12 {% endif %}">
                         <div class="card h-200 border-0">
                             {% for image in images %}
                                 {% if image.product.name == book.name %}
