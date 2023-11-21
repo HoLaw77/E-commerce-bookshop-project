@@ -2,4 +2,30 @@
 {% load static %}
 
 {% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-6 mt-3 mb-4">
+            <h2 class="logo-font title-text text-center">Your Cart:</h2>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-12 order">
+            {% if order_item %}
+            {% else %}
+            <h3 class="title-text text-center">Your cart is empty</h3>
+            <a href="{% url 'book' %}">
+                <button class="bg-dark col-lg-4 center">
+                    <p class="text-white">
+
+                        Go back
+                    </p>
+                </button>
+            </a>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
 {% endblock %}

@@ -18,6 +18,11 @@ i{
     font-size: 100%;
 }
 
+.order{
+    height: 400px;
+    width: 100%;
+}
+
 .main{
     background: url('../image/ocean-book-glass-vehicle-sunglass-bag-105434-pxhere.com.jpg') no-repeat center;
     background-image: cover;
