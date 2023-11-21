@@ -67,10 +67,24 @@ i{
     font-size: 200%;
 }
 
+
+@media only screen and (max-width: 900px){
+    .index-text{
+        margin-left:auto;
+        margin-right: auto;
+        margin-top: 550px;
+        font-family: 'Gideon Roman';
+        color: black;
+        background-color: white;
+    }
+}
+
 @media only screen and (max-width: 600px)  {
     .social-media-icon>li {
         display: block;
         padding: clear;
         font-size: 200%;
     } 
+
+    
 }
