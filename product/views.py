@@ -13,12 +13,13 @@ def show_book(request):
     images = ProductImage.objects.all()
     
     if request.GET:   
+        
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
                 messages.error(request, "Please enter searching keyword")
                 return redirect(reverse('book'))
-                
+
             queries = Q(name__icontains=query) | Q(author__icontains=query)| Q(isbn__icontains=query)| Q(publisher__icontains=query)
             books = books.filter(queries)
 

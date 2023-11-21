@@ -37,6 +37,13 @@ i{
     background-color: black;
 }
 
+.dropdown-filter{
+    display: none;
+}
+
+.show{
+    display: block;
+}
 .social-media-text {
     color: black;
 }

@@ -24,36 +24,57 @@
     </div>
     <div class="row">
         <div class="col">
-            <div class="dropdown bg-secondary">
+            <div class="dropdown">
+                <button onclick="showFunction()" 
+                class="dropbtn bg-dark text-white col-lg-4 mt-2">
+                <i class="fa-solid fa-bars text-white"></i>    
+                Filter</button>
+                    <div id="dropdown-checkbox", class="dropdown-filter">
 
-                <span class="anchor">Select Genre</span>
-                <ul class="items">
-                    <li><input type="checkbox" />Romance fiction </li>
-                    <li><input type="checkbox" />Thriller fiction</li>
-                    <li><input type="checkbox" />Detective fiction </li>
-                    <li><input type="checkbox" />Classic </li>
-                    <li><input type="checkbox" />Nonfiction</li>
-                    <li><input type="checkbox" />Sci-fi/Fantasy</li>
-                    <li><input type="checkbox" />Science</li>
-                    <li><input type="checkbox" />Social Science</li>
-                    <li><input type="checkbox" />Philosophy</li>
-                    <li><input type="checkbox" />Gender</li>
-                    <li><input type="checkbox" />Translated Fiction</li>
-                    <li><input type="checkbox"/>Literary Fiction</li>
+                        <span class="anchor">Select Genre</span>
+                        <form action="">
 
+                            <li><input type="checkbox" />Romance fiction </li>
+                            <li><input type="checkbox" />Thriller fiction</li>
+                            <li><input type="checkbox" />Detective fiction </li>
+                            <li><input type="checkbox" />Classic </li>
+                            <li><input type="checkbox" />Nonfiction</li>
+                            <li><input type="checkbox" />Sci-fi/Fantasy</li>
+                            <li><input type="checkbox" />Science</li>
+                            <li><input type="checkbox" />Social Science</li>
+                            <li><input type="checkbox" />Philosophy</li>
+                            <li><input type="checkbox" />Gender</li>
+                            <li><input type="checkbox" />Translated Fiction</li>
+                            <li><input type="checkbox"/>Literary Fiction</li>
+                            
+                        </ul>
+                        
+                        <span class="anchor">Select Language</span>
+                        <ul class="items">
+                            <li><input type="checkbox" />English </li>
+                            <li><input type="checkbox" />German</li>
+                            <li><input type="checkbox" />Japanese </li>
+                    <li><input type="checkbox" />Chinese </li>
+                    <li><input type="checkbox" />Russian</li>
+                    <li><input type="checkbox" />Greece</li>
                 </ul>
-            </div>
-            <div class="dropdown bg-secondary">
 
-                <span class="anchor">Select Language</span>
-            </div>
-            
+                <span class="anchor">Select Cover</span>
+                <ul class="items">
+                    <li><input type="checkbox" />Hard Cover </li>
+                    <li><input type="checkbox" />Paperback</li>
+                    <li><input type="checkbox" />Soft Cover</li>
+                    
+                </ul>
+                <button type="submit" class="border bg-dark text-white ml-2 mb-3">Filter</button>
+            </form>
             </div>
         </div>
-
+    </div>
     
-        <div class="row mt-5 mb-4">
-            <div class="books-container ">
+    
+    <div class="row mt-5 mb-4">
+        <div class="books-container ">
                 <div class="row">
                     {% for book in books %}
                     <div class="col-sm-5, col-md-4, col-xl-3, col-lg-3
@@ -100,4 +121,28 @@
 </div>
 
 
+    
+
+
+{% endblock %}
+
+{% block postloadjs %}
+    <script type="text/javascript">
+//code from w3school tutorial //
+        function showFunction() {
+document.getElementById("dropdown-checkbox").classList.toggle("show");
+}
+
+window.onclick = function(event) {
+if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-filter");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+    var openDropdown = dropdowns[i];
+    if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+    }
+    } }
+}
+    </script>
 {% endblock %}
