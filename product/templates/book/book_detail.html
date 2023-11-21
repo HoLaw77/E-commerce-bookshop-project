@@ -56,23 +56,34 @@
                                 Price: ${{books.price}}
 
                             </p>
+                            {% if books.category %}
+                            
+                                <p class="md-0">
+                                    Genre: {{books.category.get_genre_display}}
+                                </p>
+                            {% endif %}
+
+                            {% if books.language %}
+                                <p class="md-0">
+                                    Language: {{books.language.get_language_display}}
+                                </p>
+                            {% endif %}
+                                <p class="md-0">ISBN: {{books.isbn}} </p>
+                                <p class="md-0">
+                                    Cover: {{books.get_cover_display}}</p>
                         </div>
                     </div>                        
                     </div>                    
                 </div>
                     
-                            {% for genre in categories.genre %}
-                            {% if genre == books.category.genre %}
-                    <div class="col-sm-5, col-md-4, col-xl-3, col-lg-12">
-                        <div class="card h-200 border-0">
-                            <div class="card-body">
-                                <h5 class="md-0">Genre: {{genre}}</h5>
-                            {% endif %}
-                            {% endfor %}
-                        </div>
+                
+                            
+
+                    
+                            
                         
                     
-                        </div>
+                        
                     {% endif %}
 
                 </div>
