@@ -11,6 +11,7 @@ def show_book(request):
     query = None
     language = Language.objects.all()
     images = ProductImage.objects.all()
+    Category = None
     
     if request.GET:   
         
