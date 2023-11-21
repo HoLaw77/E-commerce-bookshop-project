@@ -11,10 +11,36 @@ def show_book(request):
     query = None
     language = Language.objects.all()
     images = ProductImage.objects.all()
-    Category = None
+    categories = None
+    languages = None
+    covers = None
     
     if request.GET:   
-        
+        if categories in request.GET:
+            filter = request.GET['categories']
+            if not categories:
+                return redirect(reverse('book'))
+            if languages in request.GET:
+                filter = request.GET['language']
+                if not languages:
+                    return redirect(reverse('book'))
+            if covers in request.GET:
+                filter = request.GET['cover']
+                if not covers:
+                    return redirect(reverse('book'))
+        if categories and languages in request.GET:
+            filter = request.GET['categories', 'languages']
+        else:
+            return redirect(reverse('book'))
+        if  categories and covers in request.GET:
+            filter = request.GET['categories', 'cover']
+        else:
+            return redirect(reverse('book'))
+        if  categories and languages and covers in request.GET:
+            filter = request.GET['categories', 'language', 'cover']
+        else:
+            return redirect(reverse('book'))
+        books = books.filter(filter)
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
