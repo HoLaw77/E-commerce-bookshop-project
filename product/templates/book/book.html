@@ -77,13 +77,37 @@
     </div>
     
     
+    {% if not books %}
+    <div class="books-container col-lg-12 col-lg-4">
+        <div class="row mt-5 mb-7">
+            <div class="col-lg-12 col-lg-3 mb-5 display=block">
+                <h1 class="title-text">Sorry, no result found. Please search again.</h1>
+            </div>
+            <div class="col-lg-12 col-lg-3 display=block">
+                <a href="{% url 'book' %}">
+                    <button class="col-lg-4 bg-dark text-white">
+                            <p>
+                                Go back
+                                
+                            </p>
+                        </button>
+                    </a>
+            </div>
+        </div>
+    </div>
+                    
+                        
+                    {% endif %}
     <div class="row mt-5 mb-4">
         <div class="books-container ">
+            
                 <div class="row">
+                    
                     {% for book in books %}
                     <div class="col-sm-5, col-md-4, col-xl-3, col-lg-3
                     {% if books|length == 1 %} col-lg-12 {% endif %}">
                         <div class="card h-200 border-0">
+                            
                             {% for image in images %}
                                 {% if image.product.name == book.name %}
                                 <a href="{% url 'book_detail' book.id %}">
