@@ -14,25 +14,22 @@ def show_book(request):
     filter = None
     
     if request.GET:   
-        if "genres" in request.GET:
-            filter = request.GET['genres']
-            if not filter:
-                return redirect(reverse('book'))
-                print("no such thing")
-            filters = Q(genre__icontains=filter)
-            books = books.filter(filters)
-            if languages in request.GET:
-                filter = request.GET['languages']
-                if not filter:
-                    return redirect(reverse('book'))
-            filters = Q(language__icontains=filter) 
-            books = books.filter(filters)
-            if "cover" in request.GET:
-                filter = request.GET['cover']
-                if not filter:
-                    return redirect(reverse('book'))
-            filters = Q(cover_icontains=filter)
-            books = books.filter(filters)
+        # if "genres" in request.GET:
+        #     filter = request.GET['genres']
+        #     genre = books.filter(category__genre__in=filter)
+        #     filter = Category.objects.filter(genre__in=filters)
+        #     books = books.filter(filter)
+        #     if languages in request.GET:
+        #         filter = request.GET['languages']
+        #         if not filter:
+        #             return redirect(reverse('book'))
+        #     filters = Q(language__icontains=filter) 
+        #     books = books.filter(filters)
+        # if "cover" in request.GET:
+        #     filter = request.GET['cover']
+        #     cover = books.filter(cover__in=filter)
+        #     filter = Product.objects.filter(cover__in=filter)
+        #     books = books.filter(cover)        
         
         if 'q' in request.GET:
             query = request.GET['q']
@@ -41,13 +38,14 @@ def show_book(request):
                 return redirect(reverse('book'))
 
             queries = Q(name__icontains=query) | Q(author__icontains=query)| Q(isbn__icontains=query)| Q(publisher__icontains=query)
-            books = books.filter(filters)
+            books = books.filter(queries)
 
     context = {
         'books': books,
         'images': images,
         'language': language,
         'search': query,
+        'filter': filter,
     }
     return render(request, 'book/book.html', context)
 
