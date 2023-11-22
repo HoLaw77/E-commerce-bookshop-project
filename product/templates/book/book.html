@@ -36,11 +36,11 @@
                         <span class="anchor">Select Genre</span>
                         <form action="{% url 'book' %}">
 
-                            <li><input type="checkbox" name="categories_genre[1]"/>Romance fiction </li>
-                            <li><input type="checkbox" name="categories_genre[2]"/>Thriller fiction</li>
-                            <li><input type="checkbox" name="categories_genre[3]"/>Detective fiction </li>
-                            <li><input type="checkbox" name="categories_genre[4]"/>Classic </li>
-                            <li><input type="checkbox" name="categories_genre[5]"/>Nonfiction</li>
+                            <li><input type="checkbox" name="genres" value=1/>Romance fiction </li>
+                            <li><input type="checkbox" name="genres" value=2/>Thriller fiction</li>
+                            <li><input type="checkbox" name="genres"/>Detective fiction </li>
+                            <li><input type="checkbox" name="genres"/>Classic </li>
+                            <li><input type="checkbox" name="genres"/>Nonfiction</li>
                             <li><input type="checkbox" />Sci-fi/Fantasy</li>
                             <li><input type="checkbox" />Science</li>
                             <li><input type="checkbox" />Social Science</li>
@@ -53,7 +53,9 @@
                         
                         <span class="anchor">Select Language</span>
                         <ul class="items">
-                            <li><input type="checkbox" />English </li>
+                            <li><input type="checkbox" name="language" value="1"/>
+                                English 
+                            </li>
                             <li><input type="checkbox" />German</li>
                             <li><input type="checkbox" />Japanese </li>
                     <li><input type="checkbox" />Chinese </li>
@@ -63,9 +65,9 @@
 
                 <span class="anchor">Select Cover</span>
                 <ul class="items">
-                    <li><input type="checkbox" />Hard Cover </li>
-                    <li><input type="checkbox" />Paperback</li>
-                    <li><input type="checkbox" />Soft Cover</li>
+                    <li><input type="checkbox" name="cover" value="1"/>Hard Cover </li>
+                    <li><input type="checkbox" name="cover" value="2"/>Paperback</li>
+                    <li><input type="checkbox" name="cover" value="3"/>Soft Cover</li>
                     
                 </ul>
                 <button type="submit" class="border bg-dark text-white ml-2 mb-3" name="filter">Filter</button>

@@ -11,36 +11,29 @@ def show_book(request):
     query = None
     language = Language.objects.all()
     images = ProductImage.objects.all()
-    categories = None
-    languages = None
-    covers = None
+    filter = None
     
     if request.GET:   
-        if categories in request.GET:
-            filter = request.GET['categories']
-            if not categories:
+        if "genres" in request.GET:
+            filter = request.GET['genres']
+            if not filter:
                 return redirect(reverse('book'))
+                print("no such thing")
+            filters = Q(genre__icontains=filter)
+            books = books.filter(filters)
             if languages in request.GET:
-                filter = request.GET['language']
-                if not languages:
+                filter = request.GET['languages']
+                if not filter:
                     return redirect(reverse('book'))
-            if covers in request.GET:
+            filters = Q(language__icontains=filter) 
+            books = books.filter(filters)
+            if "cover" in request.GET:
                 filter = request.GET['cover']
-                if not covers:
+                if not filter:
                     return redirect(reverse('book'))
-        if categories and languages in request.GET:
-            filter = request.GET['categories', 'languages']
-        else:
-            return redirect(reverse('book'))
-        if  categories and covers in request.GET:
-            filter = request.GET['categories', 'cover']
-        else:
-            return redirect(reverse('book'))
-        if  categories and languages and covers in request.GET:
-            filter = request.GET['categories', 'language', 'cover']
-        else:
-            return redirect(reverse('book'))
-        books = books.filter(filter)
+            filters = Q(cover_icontains=filter)
+            books = books.filter(filters)
+        
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -48,7 +41,7 @@ def show_book(request):
                 return redirect(reverse('book'))
 
             queries = Q(name__icontains=query) | Q(author__icontains=query)| Q(isbn__icontains=query)| Q(publisher__icontains=query)
-            books = books.filter(queries)
+            books = books.filter(filters)
 
     context = {
         'books': books,
