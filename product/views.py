@@ -8,15 +8,17 @@ from django.db.models import Q
 def show_book(request):
 
     books = Product.objects.all()
+    categories = Category.objects.all()
     query = None
     language = Language.objects.all()
     images = ProductImage.objects.all()
     filter = None
-    
+    genre = None
+
     if request.GET:   
-        # if "genres" in request.GET:
-        #     genres = request.GET['genres'].split(',')
-        #     genre = books.filter(category__genre__in=genres)
+        # if "genre" in request.GET:
+        #     genres = request.GET['genre'].split(',')
+        #     genre = categories.filter(category__genre__in=genres)
         #     genres = Category.objects.filter(genre__in=genres)
             
         #     if languages in request.GET:
@@ -25,11 +27,11 @@ def show_book(request):
         #             return redirect(reverse('book'))
         #     filters = Q(language__icontains=filter) 
         #     books = books.filter(filters)
-        # if "cover" in request.GET:
-        #     filter = request.GET['cover']
-        #     cover = books.filter(cover__in=filter)
-        #     filter = Product.objects.filter(cover__in=filter)
-        #     books = books.filter(cover)        
+        if "cover" in request.GET:
+            filter = request.GET['cover']
+            cover = books.filter(cover__in=filter)
+            filter = Product.objects.filter(cover__in=filter)
+            cover = books.filter(cover)        
         
         if 'q' in request.GET:
             query = request.GET['q']
@@ -43,10 +45,10 @@ def show_book(request):
     context = {
         'books': books,
         'images': images,
-        'language': language,
+        
+        
         'search': query,
-        'filter': filter,
-        # 'genres': genres,
+        
     }
     return render(request, 'book/book.html', context)
 
