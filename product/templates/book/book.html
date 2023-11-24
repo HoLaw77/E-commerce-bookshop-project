@@ -34,9 +34,18 @@
                     <div id="dropdown-checkbox", class="dropdown-filter">
 
                         <span class="anchor">Select Genre</span>
-                        <form action="{% url 'book' %}">
+                        
+                            <ul>
+                            <li>
+                            <a href="{% url 'book' %}?genre=Romance fiction">
 
-                            <li><input type="checkbox" name="genres" value=1/>Romance fiction </li>
+                            <p>
+
+                                Romance fiction 
+                                </p> 
+                            </a>
+                                </label>
+                            </li>
                             <li><input type="checkbox" name="genres" value=2/>Thriller fiction</li>
                             <li><input type="checkbox" name="genres"/>Detective fiction </li>
                             <li><input type="checkbox" name="genres"/>Classic </li>
@@ -70,8 +79,7 @@
                     <li><input type="checkbox" name="cover" value="3"/>Soft Cover</li>
                     
                 </ul>
-                <button type="submit" class="border bg-dark text-white ml-2 mb-3" name="filter">Filter</button>
-            </form>
+                
             </div>
         </div>
     </div>

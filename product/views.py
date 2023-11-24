@@ -15,10 +15,10 @@ def show_book(request):
     
     if request.GET:   
         # if "genres" in request.GET:
-        #     filter = request.GET['genres']
-        #     genre = books.filter(category__genre__in=filter)
-        #     filter = Category.objects.filter(genre__in=filters)
-        #     books = books.filter(filter)
+        #     genres = request.GET['genres'].split(',')
+        #     genre = books.filter(category__genre__in=genres)
+        #     genres = Category.objects.filter(genre__in=genres)
+            
         #     if languages in request.GET:
         #         filter = request.GET['languages']
         #         if not filter:
@@ -46,6 +46,7 @@ def show_book(request):
         'language': language,
         'search': query,
         'filter': filter,
+        # 'genres': genres,
     }
     return render(request, 'book/book.html', context)
 
