@@ -80,29 +80,42 @@
                 
                             
 
-                    
-                            
-                        
-                    
-                        
+                
+                
+                
+                
                 <div class="col-lg-12 mt-3 ml-2 mb-4">
+                    <div class="row">
+                        <div class="col">
+                            <form>
+                                <div class="dropdown-content">
+                                    
+                                </div>
+                                
+                            </form>
+
+                        </div>
+                    </div>
                     <a href="{% url 'book' %}">
-                    <button class="col-lg-4 bg-dark text-white">
+                        <button class="col-lg-4 bg-dark text-white">
                             <p>
                                 Go back
                                 
                             </p>
                         </button>
                     </a>
-                    <a href="/">
-
-                        <button class="col-lg-4 bg-success text-white">
-                            <p>
-                                Add to Cart 
-                                <i class="fa-solid fa-cart-shopping text-white"></i>
-                            </p>
-                        </button>
-                    </a>
+                    
+                        <form action="/" method="POST">
+                            {% csrf_token %}      
+                            <button class="col-lg-4 bg-success text-white">
+                                    
+                                    <p>
+                                        Add to Cart 
+                                        <i class="fa-solid fa-cart-shopping text-white"></i>
+                                    </p>
+                                </button>
+                            
+                        </form>
 
                 </div>
             </div>
