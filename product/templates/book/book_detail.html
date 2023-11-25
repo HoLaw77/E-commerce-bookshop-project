@@ -5,122 +5,96 @@
 <div class="container mt-4">
     <div class="row">
         <div class="col">
-
-        <form method="GET" action="{% url 'book' %}">
-            <div>
-                <input class="form-control" type="text" name="q" 
-                placeholder="Search book name, author's name, publisher or ISBN">
-                <button class="form-control bg-dark text-white" type="submit">
-                    <p>
-
-                        Search
-                        <i class="fa-solid fa-magnifying-glass text-white"></i>
-                    </p>
-                </button>
-            </div>
-
-        </form>            
+            <form method="GET" action="{% url 'book' %}">
+                <div>
+                    <input class="form-control" type="text" name="q" 
+                    placeholder="Search book name, author's name, publisher or ISBN">
+                    <button class="form-control bg-dark text-white" type="submit">
+                        <p>
+                            Search
+                            <i class="fa-solid fa-magnifying-glass text-white"></i>
+                        </p>
+                    </button>
+                </div>
+            </form>            
         </div>
     </div>
 
-        <div class="row mt-5 mb-4">
-            <div class="books-container">
-                <div class="row ml-5">
-                    {% if books %}
-                    <div class="col-sm-5, col-md-4, col-xl-3, col-lg-6 justify-content-center">
-
-                        <div class="card h-200 border-0">
-                            {% for image in images %}
-                            {% if image.product.name == books.name %}
+    <div class="row mt-5 mb-4">
+        <div class="books-container">
+            <div class="row ml-5">
+                {% if books %}
+                <div class="col-sm-5, col-md-4, col-xl-3, col-lg-6 justify-content-center">
+                    <div class="card h-200 border-0">
+                        {% for image in images %}
+                        {% if image.product.name == books.name %}
+                        <div class="card h-5 w-5 border-0">
                             
-                            <div class="card h-5 w-5 border-0">
+                            <img src="{{image.image_url}}">
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-sm-5, col-md-4, col-xl-3, col-lg-5 justify-content-center">
+                    <div class="card-body">
+                        <h5 class="md-0">{{books.name}}</h5>
+                        <p>Author: {{books.author}}</p>
+                        <p>Publisher: {{books.publisher}}</p>
+                        <p>
+                            Year of Publication: {{books.year_of_publication}}
+                        </p>
+                        <p>Page: {{books.number_of_pages}} pages</p>
+                        <p class="font-weight-bold">
+                            Price: ${{books.price}}
+                        </p>
+                        {% if books.category %}
+                        
+                            <p class="md-0">
+                                Genre: {{books.category.get_genre_display}}
+                            </p>
+                        {% endif %}
+                        {% if books.language %}
+                            <p class="md-0">
+                                Language: {{books.language.get_language_display}}
+                            </p>
+                        {% endif %}
+                            <p class="md-0">ISBN: {{books.isbn}} </p>
+                            <p class="md-0">
+                                Cover: {{books.get_cover_display}}
+                            </p>
+                    </div>
+                </div>                        
+                {% endif %}
+            </div>
+            <div class="col-lg-12 mt-3 ml-2 mb-4">
+                <div class="row">
+                    <div class="col">
+                        <form>
+                            <div class="dropdown-content">
                                 
-                                <img src="{{image.image_url}}">
                             </div>
                             
-                            {% endif %}
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="col-sm-5, col-md-4, col-xl-3, col-lg-5 justify-content-center">
-
-                        <div class="card-body">
-                            <h5 class="md-0">{{books.name}}</h5>
-                            <p>Author: {{books.author}}</p>
-                            <p>Publisher: {{books.publisher}}</p>
-                            <p>
-                            Year of Publication: {{books.year_of_publication}}
-                            </p>
-                            <p>Page: {{books.number_of_pages}} pages</p>
-                            <p class="font-weight-bold">
-                                Price: ${{books.price}}
-
-                            </p>
-                            {% if books.category %}
-                            
-                                <p class="md-0">
-                                    Genre: {{books.category.get_genre_display}}
-                                </p>
-                            {% endif %}
-
-                            {% if books.language %}
-                                <p class="md-0">
-                                    Language: {{books.language.get_language_display}}
-                                </p>
-                            {% endif %}
-                                <p class="md-0">ISBN: {{books.isbn}} </p>
-                                <p class="md-0">
-                                    Cover: {{books.get_cover_display}}</p>
-                        </div>
-                    </div>                        
-                    </div>                    
-                    {% endif %}
-                </div>
-                    
-                
-                            
-
-                
-                
-                
-                
-                <div class="col-lg-12 mt-3 ml-2 mb-4">
-                    <div class="row">
-                        <div class="col">
-                            <form>
-                                <div class="dropdown-content">
-                                    
-                                </div>
-                                
-                            </form>
-
-                        </div>
-                    </div>
-                    <a href="{% url 'book' %}">
-                        <button class="col-lg-4 bg-dark text-white">
-                            <p>
-                                Go back
-                                
-                            </p>
-                        </button>
-                    </a>
-                    
-                        <form action="/" method="POST">
-                            {% csrf_token %}      
-                            <button class="col-lg-4 bg-success text-white">
-                                    
-                                    <p>
-                                        Add to Cart 
-                                        <i class="fa-solid fa-cart-shopping text-white"></i>
-                                    </p>
-                                </button>
-                            
                         </form>
-
+                    </div>
                 </div>
+                <a href="{% url 'book' %}">
+                    <button class="col-lg-4 bg-dark text-white">
+                        <p>
+                            Go back
+                        </p>
+                    </button>
+                </a>
+                <form action="/" method="POST">
+                    {% csrf_token %}      
+                    <button class="col-lg-4 bg-success text-white">
+                        <p>
+                            Add to Cart 
+                            <i class="fa-solid fa-cart-shopping text-white"></i>
+                        </p>
+                    </button>
+                </form>
             </div>
-        </div>
-
         </div>
     </div>
 </div>

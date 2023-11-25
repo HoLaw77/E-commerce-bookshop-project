@@ -5,21 +5,18 @@
 <div class="container mt-4">
     <div class="row">
         <div class="col">
-
-        <form method="GET" action="{% url 'book' %}">
-            <div>
-                <input class="form-control" type="text" name="q" 
-                placeholder="Search book name, author's name, publisher or ISBN">
-                <button class="form-control bg-dark text-white" type="submit">
-                    <h6>
-
-                        Search
-                        <i class="fa-solid fa-magnifying-glass text-white"></i>
-                    </h6>
-                </button>
-            </div>
-
-        </form>            
+            <form method="GET" action="{% url 'book' %}">
+                <div>
+                    <input class="form-control" type="text" name="q" 
+                    placeholder="Search book name, author's name, publisher or ISBN">
+                    <button class="form-control bg-dark text-white" type="submit">
+                        <h6>
+                            Search
+                            <i class="fa-solid fa-magnifying-glass text-white"></i>
+                        </h6>
+                    </button>
+                </div>
+            </form>            
         </div>
     </div>
     <div class="row">
@@ -157,28 +154,26 @@
 </div>
 
 
-    
-
-
 {% endblock %}
 
 {% block postloadjs %}
-    <script type="text/javascript">
-//code from w3school tutorial //
-        function showFunction() {
-document.getElementById("dropdown-checkbox").classList.toggle("show");
-}
+<script type="text/javascript">
+    //code from w3school tutorial //
+    function showFunction() {
+        document.getElementById("dropdown-checkbox").classList.toggle("show");
+        }
 
-window.onclick = function(event) {
-if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-filter");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-    var openDropdown = dropdowns[i];
-    if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
+        window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-filter");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
     }
-    } }
-}
-    </script>
+</script>
 {% endblock %}
