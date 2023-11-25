@@ -7,16 +7,18 @@
         <div class="col">
             <form method="GET" action="{% url 'book' %}">
                 <div>
-                    <input class="form-control" type="text" name="q" 
-                    placeholder="Search book name, author's name, publisher or ISBN">
+                    <input class="form-control" type="text" name="q"
+                        placeholder="Search book name, author's name, publisher or ISBN">
                     <button class="form-control bg-dark text-white" type="submit">
                         <p>
                             Search
-                            <i class="fa-solid fa-magnifying-glass text-white"></i>
+                            <i class="fa-solid fa-magnifying-glass text-white">
+                                
+                            </i>
                         </p>
                     </button>
                 </div>
-            </form>            
+            </form>
         </div>
     </div>
 
@@ -29,7 +31,7 @@
                         {% for image in images %}
                         {% if image.product.name == books.name %}
                         <div class="card h-5 w-5 border-0">
-                            
+
                             <img src="{{image.image_url}}">
                         </div>
                         {% endif %}
@@ -49,22 +51,22 @@
                             Price: ${{books.price}}
                         </p>
                         {% if books.category %}
-                        
-                            <p class="md-0">
-                                Genre: {{books.category.get_genre_display}}
-                            </p>
+
+                        <p class="md-0">
+                            Genre: {{books.category.get_genre_display}}
+                        </p>
                         {% endif %}
                         {% if books.language %}
-                            <p class="md-0">
-                                Language: {{books.language.get_language_display}}
-                            </p>
+                        <p class="md-0">
+                            Language: {{books.language.get_language_display}}
+                        </p>
                         {% endif %}
-                            <p class="md-0">ISBN: {{books.isbn}} </p>
-                            <p class="md-0">
-                                Cover: {{books.get_cover_display}}
-                            </p>
+                        <p class="md-0">ISBN: {{books.isbn}} </p>
+                        <p class="md-0">
+                            Cover: {{books.get_cover_display}}
+                        </p>
                     </div>
-                </div>                        
+                </div>
                 {% endif %}
             </div>
             <div class="col-lg-12 mt-3 ml-2 mb-4">
@@ -72,9 +74,9 @@
                     <div class="col">
                         <form>
                             <div class="dropdown-content">
-                                
+
                             </div>
-                            
+
                         </form>
                     </div>
                 </div>
@@ -86,10 +88,10 @@
                     </button>
                 </a>
                 <form action="/" method="POST">
-                    {% csrf_token %}      
+                    {% csrf_token %}
                     <button class="col-lg-4 bg-success text-white">
                         <p>
-                            Add to Cart 
+                            Add to Cart
                             <i class="fa-solid fa-cart-shopping text-white"></i>
                         </p>
                     </button>
