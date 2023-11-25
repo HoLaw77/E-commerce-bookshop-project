@@ -87,9 +87,10 @@
                         </p>
                     </button>
                 </a>
-                <form action="/" method="POST">
+                <form action="{% url 'add_order' book.id %}" method="POST"
+                name="redirect_url" value="{{request.path}}">
                     {% csrf_token %}
-                    <button class="col-lg-4 bg-success text-white">
+                    <button class="col-lg-4 bg-success text-white" >
                         <p>
                             Add to Cart
                             <i class="fa-solid fa-cart-shopping text-white"></i>

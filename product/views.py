@@ -64,4 +64,5 @@ def book_detail(request, book_id):
         'categories': categories,
         'language': language,
     }
+
     return render (request, 'book/book_detail.html', context)
