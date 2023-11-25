@@ -7,125 +7,126 @@
         <div class="col">
             <form method="GET" action="{% url 'book' %}">
                 <div>
-                    <input class="form-control" type="text" name="q" 
-                    placeholder="Search book name, author's name, publisher or ISBN">
+                    <input class="form-control" type="text" name="q"
+                        placeholder="Search book name, author's name, publisher or ISBN">
                     <button class="form-control bg-dark text-white" type="submit">
                         <h6>
                             Search
-                            <i class="fa-solid fa-magnifying-glass text-white"></i>
+                            <i class="fa-solid fa-magnifying-glass text-white">
+
+                            </i>
                         </h6>
                     </button>
                 </div>
-            </form>            
+            </form>
         </div>
     </div>
     <div class="row">
         <div class="col">
             <div class="dropdown">
-                <button onclick="showFunction()" 
-                class="dropbtn bg-dark text-white col-lg-4 mt-2">
-                <i class="fa-solid fa-bars text-white"></i>    
-                <h6>
-                    Filter</h6>
+                <button onclick="showFunction()" class="dropbtn bg-dark text-white col-lg-4 mt-2">
+                    <i class="fa-solid fa-bars text-white"></i>
+                    <h6>
+                        Filter</h6>
                 </button>
-                    <div id="dropdown-checkbox", class="dropdown-filter">
+                <div id="dropdown-checkbox" , class="dropdown-filter">
 
-                        <span class="anchor">Select Genre</span>
-                        
-                            <ul>
-                            <li>
+                    <span class="anchor">Select Genre</span>
+
+                    <ul>
+                        <li>
                             <a href="{% url 'book' %}?genre=romancefiction">
 
-                            <p>
+                                <p>
 
-                                Romance fiction 
-                                </p> 
+                                    Romance fiction
+                                </p>
                             </a>
-                                </label>
-                            </li>
-                            <li><input type="checkbox" name="genres" value=2/>Thriller fiction</li>
-                            <li><input type="checkbox" name="genres"/>Detective fiction </li>
-                            <li><input type="checkbox" name="genres"/>Classic </li>
-                            <li><input type="checkbox" name="genres"/>Nonfiction</li>
-                            <li><input type="checkbox" />Sci-fi/Fantasy</li>
-                            <li><input type="checkbox" />Science</li>
-                            <li><input type="checkbox" />Social Science</li>
-                            <li><input type="checkbox" />Philosophy</li>
-                            <li><input type="checkbox" />Gender</li>
-                            <li><input type="checkbox" />Translated Fiction</li>
-                            <li><input type="checkbox"/>Literary Fiction</li>
-                            
-                        </ul>
-                        
-                        <span class="anchor">Select Language</span>
-                        <ul class="items">
-                            <li><input type="checkbox" name="language" value="1"/>
-                                English 
-                            </li>
-                            <li><input type="checkbox" />German</li>
-                            <li><input type="checkbox" />Japanese </li>
-                    <li><input type="checkbox" />Chinese </li>
-                    <li><input type="checkbox" />Russian</li>
-                    <li><input type="checkbox" />Greece</li>
-                </ul>
+                            </label>
+                        </li>
+                        <li><input type="checkbox" name="genres" value=2 />Thriller fiction</li>
+                        <li><input type="checkbox" name="genres" />Detective fiction </li>
+                        <li><input type="checkbox" name="genres" />Classic </li>
+                        <li><input type="checkbox" name="genres" />Nonfiction</li>
+                        <li><input type="checkbox" />Sci-fi/Fantasy</li>
+                        <li><input type="checkbox" />Science</li>
+                        <li><input type="checkbox" />Social Science</li>
+                        <li><input type="checkbox" />Philosophy</li>
+                        <li><input type="checkbox" />Gender</li>
+                        <li><input type="checkbox" />Translated Fiction</li>
+                        <li><input type="checkbox" />Literary Fiction</li>
 
-                <span class="anchor">Select Cover</span>
-                <ul class="items">
-                    <li><input type="checkbox" name="cover" value="1"/>Hard Cover </li>
-                    <li><input type="checkbox" name="cover" value="2"/>Paperback</li>
-                    <li><input type="checkbox" name="cover" value="3"/>Soft Cover</li>
-                    
-                </ul>
-                
+                    </ul>
+
+                    <span class="anchor">Select Language</span>
+                    <ul class="items">
+                        <li><input type="checkbox" name="language" value="1" />
+                            English
+                        </li>
+                        <li><input type="checkbox" />German</li>
+                        <li><input type="checkbox" />Japanese </li>
+                        <li><input type="checkbox" />Chinese </li>
+                        <li><input type="checkbox" />Russian</li>
+                        <li><input type="checkbox" />Greece</li>
+                    </ul>
+
+                    <span class="anchor">Select Cover</span>
+                    <ul class="items">
+                        <li><input type="checkbox" name="cover" value="1" />Hard Cover </li>
+                        <li><input type="checkbox" name="cover" value="2" />Paperback</li>
+                        <li><input type="checkbox" name="cover" value="3" />Soft Cover</li>
+
+                    </ul>
+
+                </div>
             </div>
         </div>
-    </div>
-    
-    
-    {% if not books %}
-    <div class="books-container col-lg-12 col-lg-4">
-        <div class="row mt-5 mb-7">
-            <div class="col-lg-12 col-lg-3 mb-5 display=block">
-                <h1 class="title-text">Sorry, no result found. Please search again.</h1>
-            </div>
-            <div class="col-lg-12 col-lg-3 display=block">
-                <a href="{% url 'book' %}">
-                    <button class="col-lg-4 bg-dark text-white">
+
+
+        {% if not books %}
+        <div class="books-container col-lg-12 col-lg-4">
+            <div class="row mt-5 mb-7">
+                <div class="col-lg-12 col-lg-3 mb-5 display=block">
+                    <h1 class="title-text">Sorry, no result found. Please search again.</h1>
+                </div>
+                <div class="col-lg-12 col-lg-3 display=block">
+                    <a href="{% url 'book' %}">
+                        <button class="col-lg-4 bg-dark text-white">
                             <p>
                                 Go back
-                                
+
                             </p>
                         </button>
                     </a>
+                </div>
             </div>
         </div>
-    </div>
-                    
-                        
-                    {% endif %}
-    <div class="row mt-5 mb-4">
-        <div class="books-container ">
-            
+
+
+        {% endif %}
+        <div class="row mt-5 mb-4">
+            <div class="books-container ">
+
                 <div class="row">
-                    
+
                     {% for book in books %}
                     <div class="col-sm-5, col-md-4, col-xl-3, col-lg-3
                     {% if books|length == 1 %} col-lg-12 {% endif %}">
                         <div class="card h-200 border-0">
-                            
+
                             {% for image in images %}
-                                {% if image.product.name == book.name %}
-                                <a href="{% url 'book_detail' book.id %}">
+                            {% if image.product.name == book.name %}
+                            <a href="{% url 'book_detail' book.id %}">
                                 <div class="card h-5 w-5 border-0">
 
-                                        <img class="card-img" src="{{image.image_url}}">
-                                    </div>
-                                </a>
-                                {% endif %}
+                                <img class="card-img" src="{{image.image_url}}">
+                                </div>
+                            </a>
+                            {% endif %}
                             {% endfor %}
                             <div class="card-body">
-                                    <h5 class="md-0">{{book.name}}</h5>
-                                
+                                <h5 class="md-0">{{book.name}}</h5>
+
                             </div>
                             <div class="card-body">
                                 <p>Author: {{book.author}}</p>
@@ -138,7 +139,7 @@
                                 Year of Publication: {{book.year_of_publication}}
                                 </p>
                             </div>
-                            
+
                             <div class="card-body font-weight-bold">
                                 <p>Price: ${{book.price}}</p>
                             </div>
@@ -161,9 +162,9 @@
     //code from w3school tutorial //
     function showFunction() {
         document.getElementById("dropdown-checkbox").classList.toggle("show");
-        }
+    }
 
-        window.onclick = function(event) {
+    window.onclick = function (event) {
         if (!event.target.matches('.dropbtn')) {
             var dropdowns = document.getElementsByClassName("dropdown-filter");
             var i;
