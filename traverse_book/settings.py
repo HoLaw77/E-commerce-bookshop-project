@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 import dj_database_url
-import django_heroku
 
 if os.path.isfile('env.py'):
     import env
@@ -172,11 +171,12 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 if 'DEVELOPMENT' in os.environ:
     print('Development environment')
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    DEFAULT_FROM_EMAIL = 'traversebook@project.com'
 
 else:
     print('Production environment')
@@ -186,16 +186,14 @@ else:
     EMAIL_HOST = 'smtp.gmail.com'
     EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
     EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
-    DEFAULT_FROM_EMAIL = 'howanlaw707@gmail.com'
-    DATABASES = {
-        'default': dj_database_url.parse(os.environ.get("DATABASE_URL")),
-    }
-    CHANNEL_LAYERS = {
-        'default': {
-            'BACKEND': 'channels_redis.core.RedisChannelLayer',
-            'CONFIG': {
-                "hosts": [(os.environ.get("REDIS_URL"))],
-            },
-        },
-    }
-    django_heroku.settings(locals())
+    DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_HOST_USER")
+    
+#     CHANNEL_LAYERS = {
+#         'default': {
+#             'BACKEND': 'channels_redis.core.RedisChannelLayer',
+#             'CONFIG': {
+#                 "hosts": [(os.environ.get("REDIS_URL"))],
+#             },
+#         },
+#     }
+    
