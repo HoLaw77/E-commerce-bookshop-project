@@ -15,16 +15,13 @@ def add_order(request, books_id):
     order = request.session.get('order', {})
 
     if books_id in list(order.keys()):
-        order += order[books_id].create(customer=user)
+        order[books_id]+= quantity
         messages.success(request, f'Added {product.name} to cart')
     
     print(order)
     
-    context= {
-        "order": order
-    }
-
+    
     request.session['order'] = order
-    return render (request, "order/order.html", context )
+    return render (request, "order/order.html")
 
     
