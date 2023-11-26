@@ -12,14 +12,19 @@
     </div>
     <div class="row">
         <div class="col-lg-12 order">
-            {% if order_item %}
+            {% if order %}
+            {% for order in order %}
+
+            {{order}}
+
+            {% endfor %}
             {% else %}
             <h3 class="title-text text-center">Your cart is empty</h3>
             <a href="{% url 'book' %}">
                 <button class="bg-dark col-lg-4 center">
                     <p class="text-white">
 
-                        Go back
+                        Keep shopping
                     </p>
                 </button>
             </a>

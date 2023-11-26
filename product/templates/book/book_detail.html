@@ -41,6 +41,9 @@
                 <div class="col-sm-5, col-md-4, col-xl-3, col-lg-5 justify-content-center">
                     <div class="card-body">
                         <h5 class="md-0">{{books.name}}</h5>
+                        
+
+
                         <p>Author: {{books.author}}</p>
                         <p>Publisher: {{books.publisher}}</p>
                         <p>
@@ -67,36 +70,41 @@
                         </p>
                     </div>
                 </div>
-                {% endif %}
             </div>
             <div class="col-lg-12 mt-3 ml-2 mb-4">
                 <div class="row">
                     <div class="col">
                         <form>
                             <div class="dropdown-content">
-
+                                
                             </div>
-
+                            
                         </form>
                     </div>
                 </div>
                 <a href="{% url 'book' %}">
-                    <button class="col-lg-4 bg-dark text-white">
+                    <button class=" col-lg-12 col-lg-4 bg-dark text-white">
                         <p>
-                            Go back
+                            Continue shoping
                         </p>
                     </button>
                 </a>
-                <form action="{% url 'add_order' book.id %}" method="POST">
+                
+                <form action="{% url 'add_order' books.id %}" method="POST"
+                class="mt-3">
                     {% csrf_token %}
-                    <button class="col-lg-4 bg-success text-white" >
+                    <button class=" col-lg-12 col-lg-4 bg-success text-white" 
+                    type="submit" name="order">
                         <p>
-                            Add to Cart
+                            Add to cart
                             <i class="fa-solid fa-cart-shopping text-white"></i>
                         </p>
                     </button>
                 </form>
+                
+                
             </div>
+            {% endif %}
         </div>
     </div>
 </div>
