@@ -16,11 +16,17 @@
             {% for order in order_items %}
 
             {{order}}
-
+            
             {% endfor %}
+            <button class="bg-dark col-lg-4 center">
+                <p class="text-white">
+
+                    Keep shopping
+                </p>
+            </button>
             {% else %}
             <h3 class="title-text text-center">Your cart is empty</h3>
-            <a href="{% url 'book' %}">
+            <a href="{% url 'book' %}" class="ml-5">
                 <button class="bg-dark col-lg-4 center">
                     <p class="text-white">
 

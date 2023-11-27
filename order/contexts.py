@@ -9,13 +9,13 @@ def order_contents(request):
     product_count = 0 
     order = request.session.get('order', {})
 
-    for order_id, order_data in order.items(): 
+    for books_id, order_data in order.items(): 
         if isinstance(order_data, int):
-            product = get_object_or_404(Product, pk=order_id)
+            product = get_object_or_404(Product, pk=books_id)
             total += order_data * product.price
             product_count += order_data
-            bag_items.append({
-                'order_id': order_id,
+            order_items.append({
+                'books_id': books_id,
                 'quantity': order_data,
                 'product': product,
             })

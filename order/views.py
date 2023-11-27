@@ -11,12 +11,15 @@ def show_order(request):
 def add_order(request, books_id):
     """Add individual book to cart"""
     product = get_object_or_404(Product, id=books_id)
-    
+    quantity = int(request.POST.get('quantity'))
     order = request.session.get('order', {})
 
     if books_id in list(order.keys()):
         order[books_id]+= quantity
         messages.success(request, f'Added {product.name} to cart')
+    else: 
+        order[books_id] = quantity
+    request.session['order'] = order
     
     print(order)
     
