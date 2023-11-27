@@ -13,6 +13,7 @@ def add_order(request, books_id):
     product = get_object_or_404(Product, id=books_id)
     quantity = int(request.POST.get('quantity'))
     order = request.session.get('order', {})
+    
 
     if books_id in list(order.keys()):
         order[books_id]+= quantity
@@ -27,4 +28,12 @@ def add_order(request, books_id):
     request.session['order'] = order
     return render (request, "order/order.html")
 
-    
+# def remove_order(request, books_id):
+#     """Remove individual product from the cart"""
+#     product = get_object_or_404(Product, pk=books_id)
+#     order = request.session.get('order', {})
+#     order.pop(books_id)
+#     messages.success(request, f'Removed {product.name} from your cart')
+
+#     request.session['order'] = order
+#     return render (request, "order/order.html")
