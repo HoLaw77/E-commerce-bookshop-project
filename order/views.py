@@ -50,10 +50,11 @@ def adjust_order(request, books_id):
 
 def remove_order(request, books_id):
     """Remove individual product from the cart"""
-    product = get_object_or_404(Product, pk=books_id)
+    product = get_object_or_404(Product, id=books_id)
     order = request.session.get('order', {})
     order.pop(books_id)
     messages.success(request, f'Removed {product.name} from your cart')
 
     request.session['order'] = order
     return HttpResponse(status=200)
+    
