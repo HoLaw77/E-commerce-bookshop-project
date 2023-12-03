@@ -5,8 +5,14 @@ from product.models import Product
 
 # Create your views here.
 def show_order(request):
+    print('request', request)
+    # request.session['item'] = items
+    context = {
+        'order_items': request.session['item']
+    }
+    print(context)
 
-    return render (request, 'order/order.html')
+    return render (request, 'order/order.html', context)
 
 def add_order(request, books_id):
     """Add individual book to cart"""
@@ -29,8 +35,14 @@ def add_order(request, books_id):
     
     
     request.session['item'] = item
+    print(request.session['item'])
+
     # return render (request, "order/order.html")
-    return render(request, 'order/order.html')
+    context = {
+        'order_items': request.session['item']
+    }
+
+    return render (request, 'order/order.html', context)
 
 
 def adjust_order(request, item_id):
