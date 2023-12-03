@@ -15,7 +15,7 @@ def add_order(request, books_id):
     order = request.session.get('order', {})
     print('product: ', product)
     print("quantity: ", quantity)
-    order("order: ", order)
+    print("order: ", order)
     
 
     if books_id in list(order.keys()):
@@ -29,7 +29,9 @@ def add_order(request, books_id):
     
     
     request.session['order'] = order
-    return render (request, "order/order.html")
+    # return render (request, "order/order.html")
+    return render(request, 'order/order.html')
+
 
 def adjust_order(request):
     """Adjust quantity for individual book to cart"""
