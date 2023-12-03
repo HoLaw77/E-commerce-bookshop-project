@@ -6,6 +6,7 @@ main{
 
 footer{
     margin-top: auto !important;
+    flex-grow:1
 }
 
 .title-text {

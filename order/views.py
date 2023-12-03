@@ -28,31 +28,26 @@ def add_order(request, books_id):
     request.session['order'] = order
     return render (request, "order/order.html")
 
-def adjust_order(request, books_id):
+def adjust_order(request):
     """Adjust quantity for individual book to cart"""
-    product = get_object_or_404(Product, id=books_id)
+    
     quantity = int(request.POST.get('quantity'))
     order = request.session.get('order', {})
-    
+    if request.method == "POST":
+        if quantity > 0:
+            order[order_id] = quantity
+            messages.success(request, f'Adjusted {product.name} quantity')
+        else: 
+            order.pop(order_id)
+        request.session['order'] = order
+    return redirect(reverse('show_order'))
 
-    if books_id in list(order.keys()):
-        order[books_id]+= quantity
-        messages.success(request, f'Added {product.name} to cart')
-    else: 
-        order[books_id] = quantity
-    request.session['order'] = order
-    
-    print(order)
-    
-    
-    request.session['order'] = order
-    return render (request, "order/order.html")
 
-def remove_order(request, books_id):
+def remove_order(request, order_id):
     """Remove individual product from the cart"""
-    product = get_object_or_404(Product, id=books_id)
+    product = get_object_or_404(Product, id=order_id)
     order = request.session.get('order', {})
-    order.pop(books_id)
+    order.pop(order_id)
     messages.success(request, f'Removed {product.name} from your cart')
 
     request.session['order'] = order

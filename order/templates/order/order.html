@@ -20,52 +20,66 @@
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="{{image.image_url}}" class="img-fluid rounded-start">
+                        <img src="{{image.image_url}}" 
+                        class="img-fluid rounded-start">
                         {% endif %}
                         {% endfor %}
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title title-text"> 
-                                Book name: {{order.product.name}}
+                                <strong>
+
+                                    Book name: {{order.product.name}}
+                                </strong>
                             </h5>
                             <p class="card-text title-text"> 
-                                Quantity:{{order.quantity}}
+                                Quantity: {{order.quantity}}
                             </p>
-                            <p class="card-text title-text"> 
-                                Price: ${{order.product.price}}
+                            <p class="card-text title-text">
+                                <strong>
+
+                                    Price: ${{order.product.price}}
+                                </strong> 
                             </p>
 
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-lg-12 card">
                     <div class="row">
-
                         <div class="card-body col-lg-4" style="max-width: 540px;">
                             
+                        <a class="remove-book" id="remove_">
+
+                            <button 
+                            class="card-text text-danger bg-white border-danger"
+                            type="submit">
+                            <h5 class="title-text text-danger">
+                                Remove Book
                                 
-                                <button 
-                                class="card-text text-danger bg-white border-danger"
-                                type="submit">
-                                <h5 class="title-text text-danger">
-                                    Remove Book
-                                    
-                                </h5>   
-                            </button>
+                            </h5>   
+                        </button>
+                        </a>        
                         
                         
                         
                         </div>
-                        <form method="POST" action="">
+                        
+                        <form method="POST" 
+                        action="{% url 'adjust_order' %}">
                             {% csrf_token %}
                         <div class="card-body col-lg-9">
+                            <p>
 
+                                
+                            </p>
                             <h5 class="title-text"> Adjust Quantity: </h5>
                             <input class="form-control qty_input" type="number"
-                            name="quantity" value="1" min="1" max="5"
-                            data-item_id="{{ product.id }}"
-                            id="id_qty_{{ product.id }}">
+                            name="quantity" value="1" min="0" max="5"
+                            data-item_id="{{ order.order_id }}"
+                            id="id_qty_{{ order.order_id }}">
                             <button class=" col-lg-12 col-lg-4 bg-success text-white"
                             type="submit">Submit</button>
                         </div>
@@ -80,12 +94,24 @@
             {% endfor %}
             <a href="{% url 'book' %}">
 
-                <button class="bg-dark col-lg-4 center">
+                <button class="bg-dark col-lg-4 mt-5 mb-5 center">
                     <p class="text-white">
                         
                         Keep shopping
                     </p>
                 </button>
+            <a href="{% url 'book' %}">
+
+                <button class="bg-warning col-lg-4 mt-5 mb-5 center">
+                    <p class="text-dark">
+                        <strong>
+
+                            Checkout
+                        </strong>
+                    </p>
+                </button>
+            </a>
+                
             </a>
             {% else %}
             <h3 class="title-text text-center">Your cart is empty</h3>
@@ -102,4 +128,24 @@
 
     </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+<script type="text/javascript">
+
+
+//remove product after clicking in html//
+
+    $('.remove-book').click(function(e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var url = `/order/remove/${orderId}/`;
+        var data = {'csrfmiddlewaretoken': csrfToken};
+
+        $.post(url, data)
+        .done(function() {
+            location.reload();
+        });
+    })
+</script>
 {% endblock %}

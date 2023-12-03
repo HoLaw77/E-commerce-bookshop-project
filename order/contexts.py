@@ -19,6 +19,7 @@ def order_contents(request):
                 'books_id': books_id,
                 'quantity': order_data,
                 'product': product,
+                
             })
     context = {
         "order_items": order_items,
