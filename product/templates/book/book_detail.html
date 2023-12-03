@@ -91,14 +91,14 @@
                 </a>
                 
                 <form action="{% url 'add_order' books.id %}" method="POST"
-                class="mt-3" name="order">
+                    class="mt-3" name="order">
                     {% csrf_token %}
                     <input class="form-control" type="number"
-                    name="quantity" value="1" min="1" max="5"
-                    data-item_id="{{ books.id }}"
-                    id="id_qty_{{ books.id }}">
+                        name="quantity" value="1" min="1" max="5"
+                        data-item_id="{{ books.id }}"
+                        id="id_qty_{{ books.id }}">
                     <button class=" col-lg-12 col-lg-4 bg-success text-white" 
-                    type="submit" name="order">
+                        type="submit" name="order">
                         <p>
                             Add to cart
                             <i class="fa-solid fa-cart-shopping text-white"></i>

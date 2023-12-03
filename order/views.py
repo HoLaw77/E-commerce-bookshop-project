@@ -13,6 +13,9 @@ def add_order(request, books_id):
     product = get_object_or_404(Product, id=books_id)
     quantity = int(request.POST.get('quantity'))
     order = request.session.get('order', {})
+    print('product: ', product)
+    print("quantity: ", quantity)
+    order("order: ", order)
     
 
     if books_id in list(order.keys()):
@@ -37,6 +40,7 @@ def adjust_order(request):
         if quantity > 0:
             order[order_id] = quantity
             messages.success(request, f'Adjusted {product.name} quantity')
+            return render (request, 'order/order.html')
         else: 
             order.pop(order_id)
         request.session['order'] = order
