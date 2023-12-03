@@ -7,10 +7,10 @@ def order_contents(request):
     order_items = []
     total = 0
     product_count = 0 
-    order = request.session.get('order', {})
+    item = request.session.get('item', {})
     images = ProductImage.objects.all()
 
-    for books_id, order_data in order.items(): 
+    for books_id, order_data in item.items(): 
         if isinstance(order_data, int):
             product = get_object_or_404(Product, pk=books_id)
             total += order_data * product.price
@@ -22,7 +22,7 @@ def order_contents(request):
                 
             })
     context = {
-        "order_items": order_items,
+        "item_items": order_items,
         "total": total,
         "product_count": product_count,
         "images": images,

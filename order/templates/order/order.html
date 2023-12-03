@@ -11,12 +11,12 @@
 
     </div>
     <div class="row">
-        <div class="col-lg-12 order">
+        <div class="col-lg-12">
             {% if order_items %}
-            {% for order in order_items %}
-            {% if order.product %}
+            {% for item in order_items %}
+            {% if item.product %}
             {% for image in images %}
-            {% if image.product.name == order.product.name %}
+            {% if image.product.name == item.product.name %}
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
                     <div class="col-md-4">
@@ -30,16 +30,16 @@
                             <h5 class="card-title title-text">
                                 <strong>
 
-                                    Book name: {{order.product.name}}
+                                    Book name: {{item.product.name}}
                                 </strong>
                             </h5>
                             <p class="card-text title-text">
-                                Quantity: {{order.quantity}}
+                                Quantity: {{item.quantity}}
                             </p>
                             <p class="card-text title-text">
                                 <strong>
 
-                                    Price: ${{order.product.price}}
+                                    Price: ${{item.product.price}}
                                 </strong>
                             </p>
 
@@ -51,7 +51,7 @@
                     <div class="row">
                         <div class="card-body col-lg-4" style="max-width: 540px;">
 
-                            <a class="remove-book" id="remove_{{order.order_id}}">
+                            <a class="remove-book" id="remove_{{item.item_id}}">
                                     <h5 class="title-text text-danger">
                                         Remove Book
                                     </h5>
@@ -65,8 +65,8 @@
                                 <h5 class="title-text"> Adjust Quantity: </h5>
                                 <input class="form-control qty_input" 
                                 type="number" name="quantity" value="1" min="0"
-                                    max="5" data-item_id="{{ order.order_id }}" 
-                                    id="id_qty_{{ order.order_id }}">
+                                    max="5" data-item_id="{{ item.item_id }}" 
+                                    id="id_qty_{{ item.item_id }}">
                                 <button 
                                     class=" col-lg-12 col-lg-4 bg-success text-white" 
                                     type="submit">
@@ -128,7 +128,7 @@
     $('.remove-book').click(function (e) {
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
-        var url = `/order/remove/${orderId}/`;
+        var url = `/order/remove/${itemId}/`;
         var data = { 'csrfmiddlewaretoken': csrfToken };
 
         $.post(url, data)
