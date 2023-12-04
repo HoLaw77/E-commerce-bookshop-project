@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect, reverse
-from .models import Order, OrderDetail
 from django.shortcuts import HttpResponse, get_object_or_404
 from product.models import Product
 

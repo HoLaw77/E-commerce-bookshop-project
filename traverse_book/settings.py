@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'address',
     'django_countries',
     'isbn_field',
+    'checkout',
 ]
 
 MIDDLEWARE = [
