@@ -16,11 +16,12 @@ class Order(models.Model):
         blank=True,
         related_name='orders')
     countries = CountryField()
+    email = models.CharField(max_length=100, null=True, blank=True)
+    phone_number = models.CharField(max_length = 15, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
     address1 = models.CharField(max_length=64, null=True, blank=True)
     address2 = models.CharField(max_length=64, null=True, blank=True)
     postcode = models.CharField(max_length=20, null=True, blank=True)
-    country = models.CharField(max_length=70, null=True, blank=True)
     order_total = models.DecimalField(max_digits=12, decimal_places=2, 
     null=False, default=0)
     overall_total = models.DecimalField(max_digits=12, decimal_places=2, 
@@ -32,7 +33,7 @@ class Order(models.Model):
 
     def generate_total(self):
         """Generate the total when item is added"""
-        self.order_total = self.detail.aggregate(Sum('item_total'))[item_total_sum]
+        self.order_total = self.order_detail.aggregate(Sum('item_total'))[item_total__sum]
         self.delivery_cost = self.order_total * settings.DELIVERY_PERCENTAGE / 100
         self.overall_total = self.order_total + self.delivery_cost
         self.save()
