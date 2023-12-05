@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Sum
 import uuid
 from django_countries.fields import CountryField
 from product.models import Product, ProductImage, Language, Category
@@ -20,10 +21,22 @@ class Order(models.Model):
     address2 = models.CharField(max_length=64, null=True, blank=True)
     postcode = models.CharField(max_length=20, null=True, blank=True)
     country = models.CharField(max_length=70, null=True, blank=True)
+    order_total = models.DecimalField(max_digits=12, decimal_places=2, 
+    null=False, default=0)
+    overall_total = models.DecimalField(max_digits=12, decimal_places=2, 
+    null=False, default=0)
 
     def _generate_order_number(self):
         
         return uuid.uuid4().hex.upper()
+
+    def generate_total(self):
+        """Generate the total when item is added"""
+        self.order_total = self.detail.aggregate(Sum('item_total'))[item_total_sum]
+        self.delivery_cost = self.order_total * settings.DELIVERY_PERCENTAGE / 100
+        self.overall_total = self.order_total + self.delivery_cost
+        self.save()
+
 
     def save(self, *args, **kwargs):
         """
