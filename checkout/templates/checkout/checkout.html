@@ -15,8 +15,26 @@
             <p>Please fill out the form to complete your order.</p>
             <form action="{% url 'checkout' %}" method="POST" id="orderpayment">
                 {% csrf_token %}
-                {{confirm_order}}
-                <fieldset>Personal Information</fieldset>
+                <fieldset class="mb-3">
+                    Contact Information
+                </fieldset>
+                {{confirm_order.full_name |  as_crispy_field }}
+            
+                {{confirm_order.email | as_crispy_field }}
+                {{confirm_order.phone_number | as_crispy_field }}
+                <fieldset class="mb-3">Delivery Information </fieldset>
+                {{confirm_order.address1 | as_crispy_field}}
+                {{confirm_order.address2 | as_crispy_field}}
+                {{confirm_order.postcode | as_crispy_field}}
+                {{confirm_order.countries | as_crispy_field}}
+            
+                <div class="checkout-check col-lg-12">
+                    {% if user is authenticated %}
+                    {% else %}
+                    {% endif %}
+                </div>
+
+            <button class="col-lg-12, col-lg-6 bg-success text-white">Submit</button>
             </form>            
 
     </div>
