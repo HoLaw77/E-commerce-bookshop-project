@@ -25,8 +25,17 @@ class Order(models.Model):
         
         return uuid.uuid4().hex.upper()
 
+    def save(self, *args, **kwargs):
+        """
+        Override the original save method to set the order number
+        if it hasn't been set already.
+        """
+        if not self.order_number:
+            self.order_number = self._generate_order_number()
+        super().save(*args, **kwargs)
+
     def __str__(self):
-        return self.order_full_name
+        return self.order_number
 
 class OrderDetail(models.Model):
     """Model for OrderItem."""
@@ -35,7 +44,10 @@ class OrderDetail(models.Model):
         on_delete=models.CASCADE,
         related_name='order_detail'
     )
-    
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name='order_detail', 
+        default = ''
+    )
     quantity = models.PositiveIntegerField(default=1)
 
     def __str__(self):
