@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect, reverse
 from django.shortcuts import HttpResponse, get_object_or_404
-from product.models import Product
+from product.models import Product, ProductImage
 
 # Create your views here.
 def show_order(request):
+    image = ProductImage.objects.all()
     print('request', request)
     # request.session['item'] = items
     context = {
-        'order_items': request.session['item']
+        'order_items': request.session['item'],
+        'image': image,
     }
     print(context)
 
