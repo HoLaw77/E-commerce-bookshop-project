@@ -53,9 +53,9 @@ class OrderDetail(models.Model):
     blank=False, editable=False)
 
     def save(self, *args, **kwargs):
-        """Set item_total according to price * quantity"""
+        """Set it(em_total according to price * quantity"""
         self.item_total = self.product.price * self.quantity
-        super.save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return str(self.id)
