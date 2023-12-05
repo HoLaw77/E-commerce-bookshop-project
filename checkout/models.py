@@ -48,7 +48,14 @@ class OrderDetail(models.Model):
         Product, on_delete=models.CASCADE, related_name='order_detail', 
         default = ''
     )
-    quantity = models.PositiveIntegerField(default=1)
+    quantity = models.IntegerField(default=1)
+    item_total = models.DecimalField(max_digits=6, decimal_places=2, null=False,
+    blank=False, editable=False)
+
+    def save(self, *args, **kwargs):
+        """Set item_total according to price * quantity"""
+        self.item_total = self.product.price * self.quantity
+        super.save(*args, **kwargs)
 
     def __str__(self):
         return str(self.id)
