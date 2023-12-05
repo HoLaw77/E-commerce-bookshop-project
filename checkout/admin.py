@@ -4,8 +4,8 @@ from .models import Order, OrderDetail
 
 class OrderAdmin(admin.ModelAdmin):
     list_display = ("order_number", "full_name")
-    readonly_fields = ("order_number", "full_name", "profile", "countries", 
-    "date", "address1", "address2", "postcode", "country",)
+    readonly_fields = ("order_number",
+    "date", )
     fields = ("order_number", "full_name", "profile", "countries", 
     "date", "address1", "address2", "postcode", "country",)
 
