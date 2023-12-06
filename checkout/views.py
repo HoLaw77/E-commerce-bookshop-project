@@ -8,6 +8,9 @@ import stripe
 # Create your views here.
 
 def checkout(request):
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
+
     item = request.session.get('item', {})
     if not item:
         message.error(request, "No book in your cart now.")
@@ -15,6 +18,14 @@ def checkout(request):
     order_in_cart = order_contents(request)
     total = order_in_cart['overall_total']
     stripe_total = round(total * 100) 
+    stripe_api_key = stripe_secret_key
+    intent = stripe.PaymentIntent.create(
+        amount = stripe_total,
+        currency = settings.STRIPE_CURRENCY,
+    )
+
+    print(intent)
+    
     confirm_order = ConfirmOrder()
     template = "checkout/checkout.html"
     context = {
