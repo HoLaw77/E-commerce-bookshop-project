@@ -6,11 +6,92 @@
 <div class="container col-lg-6">
     <div class="row">
         <div class="col-lg-12 col-md-6 mt-3 mb-4">
-            <h2 class="logo-font title-text text-center">Your Cart:</h2>
+            <h2 class="logo-font title-text text-center">Checkout</h2>
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-12">
+            <div class="col-lg-12 col-lg-6 order-lg-last">
+                <h3 class="title-text"> Order Summary:</h3>
+                {% if item_items %}
+                {% for item in item_items %}
+                
+                {% if item.product %}
+                {% for image in images %}
+                {% if image.product.name == item.product.name %}
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="{{image.image_url}}" 
+                            class="img-fluid rounded-start">
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title title-text">
+                                    <strong>
+    
+                                        Book name: {{item.product.name}}
+                                    </strong>
+                                </h5>
+                                <p class="card-text title-text">
+                                    Quantity: {{item.quantity}}
+                                </p>
+                                <p class="card-text title-text">
+                                    <strong>
+    
+                                        Price: ${{item.product.price}}
+                                    </strong>
+                                </p>
+    
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-lg-12 card">
+                        <div class="row">
+                            <div class="card-body col-lg-4" style="max-width: 540px;">
+    
+                                <a class="remove-book" id="remove_{{item.item_id}}">
+                                        <h5 class="title-text text-danger">
+                                            Remove Book
+                                        </h5>
+                                </a>
+                            </div>
+                            
+                                <div class="card-body col-lg-9">
+                                    <p>
+                                    </p>
+                                    <h5 class="title-text"> Adjust Quantity: </h5>
+                                    <input class="form-control qty_input" 
+                                    type="number" name="quantity" value="1" min="0"
+                                        max="5" data-item_id="{{ item.item_id }}" 
+                                        id="id_qty_{{ item.item_id }}">
+                                    <button 
+                                        class=" col-lg-12 col-lg-4 bg-success text-white" 
+                                        type="submit">
+                                        Submit
+                                    </button>
+                                </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                <div class="col-lg-12 col-lg-4">
+                    <p>
+                        <strong>
+    
+                            Total Price: $ {{total}}
+                        </strong>
+                    </p>
+    
+                </div>
+        <div class="col-lg-12 mb-5">
             <p>Please fill out the form to complete your order.</p>
             <form action="{% url 'checkout' %}" method="POST" id="orderpayment">
                 {% csrf_token %}
@@ -32,7 +113,12 @@
                     {% if user.is_authenticated %}
                     
                     <div class="col-lg-6">
+                    <a href="">
+
                         <h5>Save these information to my profile</h5>
+                        <input class="form-check-input" type="checkbox" 
+                        id="id-save-info" name="save-info" checked>
+                    </a>
                     </div>
                     {% else %}
                     <div class="col-lg-6">
@@ -53,7 +139,8 @@
                     {% endif %}
                 </div>
 
-            <button class="col-lg-12, col-lg-6 mt-4 bg-success text-white">Submit</button>
+            <button class="col-lg-12, col-lg-6 mt-4 bg-success text-white">
+                Submit</button>
             </form>            
 
     </div>
