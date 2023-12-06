@@ -32,6 +32,7 @@ def order_contents(request):
         "product_count": product_count,
         "images": images,
         "overall_total": overall_total,
+        
     }
 
     return context

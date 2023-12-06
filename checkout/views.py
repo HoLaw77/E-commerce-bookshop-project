@@ -12,7 +12,9 @@ def checkout(request):
     confirm_order = ConfirmOrder()
     template = "checkout/checkout.html"
     context = {
-        "confirm_order": confirm_order
+        "confirm_order": confirm_order,
+        "stripe_public_key": "pk_test_51OBjadE3mV0w6kupavap87LqckacfKyC4ua4w0lRjpFAnE8Zw33chnsmtOM9YUKp8NDYue3m3K4hAjMlYPUZ2qtn00CxCrEP1G",
+        "client_secret": "client secret",
     }
 
     return render (request, template, context)
