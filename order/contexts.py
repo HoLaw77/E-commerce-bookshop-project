@@ -21,11 +21,16 @@ def order_contents(request):
                 'product': product,
                 
             })
+
+        delivery = total * Decimal(settings.DELIVERY_PERCENTAGE / 100)
+        overall_total = total + delivery
+
     context = {
         "item_items": order_items,
         "total": total,
         "product_count": product_count,
         "images": images,
+        "overall_total": overall_total,
     }
 
     return context

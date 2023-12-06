@@ -86,12 +86,16 @@
                 <p>
                     <strong>
 
-                        Total Price: $ {{total}}
+                        Total Price: $ {{overall_total | floatformat:"2"}}
+                        <small>
+
+                            (5% delivery cost included)
+                        </small>
                     </strong>
                 </p>
 
             </div>
-            
+
             <a href="{% url 'book' %}">
 
                 <button class="bg-dark col-lg-4 mt-5 mb-5 center">
