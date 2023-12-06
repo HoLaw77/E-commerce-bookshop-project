@@ -12,9 +12,9 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            {% if order_items %}
-            {% for item in order_items %}
-            {{item}}
+            {% if item_items %}
+            {% for item in item_items %}
+            
             {% if item.product %}
             {% for image in images %}
             {% if image.product.name == item.product.name %}
@@ -58,8 +58,7 @@
                                     </h5>
                             </a>
                         </div>
-                        <form method="POST" action="{% url 'adjust_order' %}">
-                            {% csrf_token %}
+                        
                             <div class="card-body col-lg-9">
                                 <p>
                                 </p>
@@ -74,7 +73,7 @@
                                     Submit
                                 </button>
                             </div>
-                        </form>
+                        
                     </div>
                 </div>
             </div>
