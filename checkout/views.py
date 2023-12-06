@@ -18,7 +18,7 @@ def checkout(request):
     order_in_cart = order_contents(request)
     total = order_in_cart['overall_total']
     stripe_total = round(total * 100) 
-    stripe_api_key = stripe_secret_key
+    stripe.api_key = stripe_secret_key
     intent = stripe.PaymentIntent.create(
         amount = stripe_total,
         currency = settings.STRIPE_CURRENCY,
@@ -27,11 +27,15 @@ def checkout(request):
     print(intent)
     
     confirm_order = ConfirmOrder()
+
+    # if not stripe_public_key:
+    #     message.warning(request, 'You forget to set your stripe public key.')
+
     template = "checkout/checkout.html"
     context = {
         "confirm_order": confirm_order,
-        "stripe_public_key": "pk_test_51OBjadE3mV0w6kupavap87LqckacfKyC4ua4w0lRjpFAnE8Zw33chnsmtOM9YUKp8NDYue3m3K4hAjMlYPUZ2qtn00CxCrEP1G",
-        "client_secret": "client secret",
+        "stripe_public_key": stripe_public_key,
+        "client_secret": intent.client_secret,
     }
 
     return render (request, template, context)
