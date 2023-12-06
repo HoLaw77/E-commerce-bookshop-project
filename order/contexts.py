@@ -6,7 +6,8 @@ from product.models import Product, ProductImage
 def order_contents(request):
     order_items = []
     total = 0
-    product_count = 0 
+    product_count = 0
+    overall_total = 0 
     item = request.session.get('item', {})
     images = ProductImage.objects.all()
 
