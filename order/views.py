@@ -6,14 +6,10 @@ from product.models import Product, ProductImage
 def show_order(request):
     image = ProductImage.objects.all()
     print('request', request)
-    # request.session['item'] = items
-    context = {
-        'order_items': request.session['item'],
-        'image': image,
-    }
-    print(context)
+    
+    
 
-    return render (request, 'order/order.html', context)
+    return render (request, 'order/order.html')
 
 def add_order(request, books_id):
     """Add individual book to cart"""

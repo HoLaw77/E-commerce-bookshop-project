@@ -8,7 +8,6 @@
         <div class="col-lg-12 col-md-6 mt-3 mb-4">
             <h2 class="logo-font title-text text-center">Your Cart:</h2>
         </div>
-
     </div>
     <div class="row">
         <div class="col-lg-12">
@@ -27,14 +26,34 @@
                 {{confirm_order.address2 | as_crispy_field}}
                 {{confirm_order.postcode | as_crispy_field}}
                 {{confirm_order.countries | as_crispy_field}}
-            
+            <div class="row">
+
                 <div class="checkout-check col-lg-12">
-                    {% if user is authenticated %}
+                    {% if user.is_authenticated %}
+                    
+                    <div class="col-lg-6">
+                        <h5>Save these information to my profile</h5>
+                    </div>
                     {% else %}
+                    <div class="col-lg-6">
+                        <a href="{% url 'account_signup' %}">
+                            
+                            <h5>Create an account</h5>
+                        </a>
+                        
+                    </div>
+                    <div class="col-lg-6">
+                        <a href="{% url 'account_login' %}">
+                            
+                            <h5>Log in to save the delivery information</h5>
+                        </a>
+                        
+                    </div>
+                </div>
                     {% endif %}
                 </div>
 
-            <button class="col-lg-12, col-lg-6 bg-success text-white">Submit</button>
+            <button class="col-lg-12, col-lg-6 mt-4 bg-success text-white">Submit</button>
             </form>            
 
     </div>
