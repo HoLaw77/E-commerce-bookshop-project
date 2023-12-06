@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
+from django.conf import settings
 from .forms import ConfirmOrder
+from order.contexts import order_contents
+
+import stripe
 # Create your views here.
 
 def checkout(request):
@@ -8,7 +12,9 @@ def checkout(request):
     if not item:
         message.error(request, "No book in your cart now.")
         return redirect(reverse('book'))
-
+    order_in_cart = order_contents(request)
+    total = order_in_cart['overall_total']
+    stripe_total = round(total * 100) 
     confirm_order = ConfirmOrder()
     template = "checkout/checkout.html"
     context = {
