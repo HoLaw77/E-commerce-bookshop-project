@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
 from .forms import ConfirmOrder
@@ -94,3 +94,13 @@ def checkout_success(request, order_number):
     message.success(request, 
     f'Order successfully processed. Order number is {order_number}. \
     A confirmation email will be send to {order.email}')
+
+    if 'item' in request.session:
+        del request.session['item']
+
+    template = 'checkout/checkout_success.html'
+    context = {
+        'order': order,
+    }
+
+    return render (request, template, context) 
