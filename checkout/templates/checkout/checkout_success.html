@@ -8,30 +8,196 @@
         <div class="col-lg-12 col-md-6 mt-3 mb-4">
             <h2 class="logo-font title-text text-center">Order Confirmation</h2>
             <h3 class="mt-4 text-center title-text">
-                Your order has been processed. A confirmation email will be 
+                Your order has been processed. A confirmation email will be
                 sent to <strong>{{order.email}}</strong> you.
             </h3>
 
-            <h3 class="mt-5 text-center title-text"> 
+            <h3 class="mt-5 text-center title-text">
                 Your Order Number is {{order_number}}</h3>
 
-                
+            <div class="row">
+                <div class="col-lg-12 col-lg-6">
+                    <div class="row">
+                        <div class="col">
+                            <h4>Order details:</h4>
+                            {% for item in order.order_detail.all %}
+                            <div class="row">
+                                <div class="col-lg-12 col-lg-6">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-lg-6">
+                                            <p>
+                                                Order Date: {{order.date}}
+                                            </p>
+                                        </div>
+                                    </div>
 
-                <a href="{% url 'book' %}">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-lg-6">
+                                            <p>
+                                                Book Name: {{item.product.name}}
 
-                    <button class="bg-dark col-lg-4 mt-5 mb-5 center">
-                        <p class="text-white">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    {% for image in images %}
+                                {% if image.product.name == item.product.name %}
+
+                                    <div class="card mb-3" 
+                                    style="max-width: 50px;">
+                                    <div class="row g-0">
+                                        <div class="col-lg-12">
+                                            <img src="{{image.image_url}}" 
+                                            class="img-fluid rounded-start">
+                                        </div>
+                                    </div>
+                                    </div>
+                                {% endif %}
+                                {% endfor %}
+
+                                <div class="row">
+                                    <div class="col-lg-12 col-lg-6">
+                                        <p>
+                                            Price: $ {{item.product.price}}
+
+                                        </p>
+                                    </div>
+                                </div>
+
+                                
+                                
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+
+            <div class="row">
+                <div class="col-lg-12 col-lg-6">
+                    <div class="row">
+                        <div class="col">
+                            <h4>Delivery Information:</h4>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <p>
+
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-lg-6">
+                            <p>
+                                Full Name: {{order.full_name}}
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-lg-6">
+                            <p>
+                                Email: {{order.email}}
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-lg-6">
+                            <p>
+                                Phone: {{order.phone_number}}
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-lg-6">
+                            <p>
+                                Address line 1: {{order.address1}}
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-lg-6">
+                            <p>
+                                Address line 2: {{order.address2}}
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-lg-6">
+                            <p>
+                                Postcode: {{order.postcode}}
+
+                            </p>
+                        </div>
+                    </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-lg-6">
+                                <p>
+                                    Country: {{order.countries}}
     
-                            Keep shopping
-                        </p>
-                    </button>
+                                </p>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 col-lg-6">
+                    <div class="row">
+                        <div class="col">
+                            <h4>Billing Information:</h4>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-lg-6">
+                            <p>
+                                Order Total: $ {{order.order_total}}
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-lg-6">
+                            <p>
+                                Delivery Cost: $ {{order.delivery_cost}}
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-lg-6">
+                            <p>
+                                Overall Total: $ {{order.overall_total}}
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="{% url 'book' %}">
+
+                <button class="bg-dark col-lg-12 col-lg-4 mt-5 mb-5 center">
+                    <p class="text-white">
+
+                        Keep shopping
+                    </p>
+                </button>
         </div>
     </div>
     <div class="row">
-    <div class="col-lg-12">
+        <div class="col-lg-12">
 
+        </div>
     </div>
-</div>
 
-{% endblock %}
-
+    {% endblock %}

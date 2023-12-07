@@ -33,6 +33,7 @@ def order_contents(request):
         "images": images,
         "overall_total": overall_total,
         
+        
     }
 
     return context

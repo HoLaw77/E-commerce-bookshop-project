@@ -14,7 +14,7 @@ class OrderAdmin(admin.ModelAdmin):
     "date", )
     fields = ("order_number", "full_name", "profile", 
     "date","email", "phone_number", "address1", "address2", "postcode", 
-    "countries", 'order_total', 'overall_total')
+    "countries", 'order_total', 'overall_total', 'delivery_cost')
 
 admin.site.register(Order, OrderAdmin)
 

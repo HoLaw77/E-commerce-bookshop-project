@@ -92,6 +92,7 @@ def checkout_success(request, order_number):
 
     if 'item' in request.session:
         del request.session['item']
+        
 
     template = 'checkout/checkout_success.html'
     context = {

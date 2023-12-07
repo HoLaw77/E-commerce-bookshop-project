@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models import Sum
 import uuid
+from django.conf import settings
 from django_countries.fields import CountryField
 from product.models import Product, ProductImage, Language, Category
 from customer.models import Profile, Book_Interest
@@ -24,6 +25,8 @@ class Order(models.Model):
     postcode = models.CharField(max_length=20, null=True, blank=True)
     order_total = models.DecimalField(max_digits=12, decimal_places=2, 
     null=False, default=0)
+    delivery_cost = models.DecimalField(max_digits=12, decimal_places=2, 
+    null=False, default=0)
     overall_total = models.DecimalField(max_digits=12, decimal_places=2, 
     null=False, default=0)
 
@@ -33,7 +36,7 @@ class Order(models.Model):
 
     def generate_total(self):
         """Generate the total when item is added"""
-        self.order_total = self.order_detail.aggregate(Sum('item_total'))[item_total__sum] or 0
+        self.order_total = self.order_detail.aggregate(Sum('item_total'))['item_total__sum'] or 0
         self.delivery_cost = self.order_total * settings.DELIVERY_PERCENTAGE / 100
         self.overall_total = self.order_total + self.delivery_cost
         self.save()
