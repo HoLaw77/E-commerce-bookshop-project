@@ -33,7 +33,7 @@ class Order(models.Model):
 
     def generate_total(self):
         """Generate the total when item is added"""
-        self.order_total = self.order_detail.aggregate(Sum('item_total'))[item_total__sum]
+        self.order_total = self.order_detail.aggregate(Sum('item_total'))[item_total__sum] or 0
         self.delivery_cost = self.order_total * settings.DELIVERY_PERCENTAGE / 100
         self.overall_total = self.order_total + self.delivery_cost
         self.save()
@@ -62,7 +62,7 @@ class OrderDetail(models.Model):
         Product, on_delete=models.CASCADE, related_name='order_detail', 
         default = ''
     )
-    quantity = models.IntegerField(default=1)
+    quantity = models.IntegerField(default=0)
     item_total = models.DecimalField(max_digits=6, decimal_places=2, null=False,
     blank=False, editable=False)
 

@@ -32,19 +32,14 @@ def checkout(request):
                 try: 
                     product = Product.objects.get(id=books_id)
                     if isinstance(order_data, int):
-                        product = get_object_or_404(Product, pk=books_id)
-                        total += order_data * product.price
-                        product_count += order_data
-                        order_items.append({
-                            'books_id': books_id,
-                            'quantity': order_data,
-                            'product': product,
-                                
-                        })
+                        order_detail = OrderDetail(
+                            order=order,
+                            product=product,
+                            quantity= order_data,
+                        )
+                        order_detail.save()
 
-                    delivery = total * Decimal(settings.DELIVERY_PERCENTAGE / 100)
-                    overall_total = total + delivery
-                except Product.DoesNotExist():
+                except Product.DoesNotExist:
                     order.delete()
                     return redirect(reverse('show_order'))
             request.session["save-info"] = 'save-info' in request.POST
@@ -89,11 +84,11 @@ def checkout(request):
 def checkout_success(request, order_number):
     """Handle request when checkout successfully"""
 
-    save-info = request.session.get("save-info")
+    save_info = request.session.get("save-info")
     order = get_object_or_404(Order, order_number = order_number)
-    message.success(request, 
-    f'Order successfully processed. Order number is {order_number}. \
-    A confirmation email will be send to {order.email}')
+    # message.success(request, 
+    # f'Order successfully processed. Order number is {order_number}. \
+    # A confirmation email will be send to {order.email}')
 
     if 'item' in request.session:
         del request.session['item']
@@ -101,6 +96,7 @@ def checkout_success(request, order_number):
     template = 'checkout/checkout_success.html'
     context = {
         'order': order,
+        'order_number': order_number
     }
 
     return render (request, template, context) 

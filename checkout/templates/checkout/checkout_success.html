@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container col-lg-6">
+    <div class="row">
+        <div class="col-lg-12 col-md-6 mt-3 mb-4">
+            <h2 class="logo-font title-text text-center">Order Confirmation</h2>
+            <h3 class="mt-4 text-center title-text">
+                Your order has been processed. A confirmation email will be 
+                sent to <strong>{{order.email}}</strong> you.
+            </h3>
+
+            <h3 class="mt-5 text-center title-text"> 
+                Your Order Number is {{order_number}}</h3>
+
+                
+
+                <a href="{% url 'book' %}">
+
+                    <button class="bg-dark col-lg-4 mt-5 mb-5 center">
+                        <p class="text-white">
+    
+                            Keep shopping
+                        </p>
+                    </button>
+        </div>
+    </div>
+    <div class="row">
+    <div class="col-lg-12">
+
+    </div>
+</div>
+
+{% endblock %}
+
