@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.conf import settings
 from .forms import ConfirmOrder
+from .models import Order, OrderDetail
 from order.contexts import order_contents
-
+from product.models import Product
 import stripe
 # Create your views here.
 
@@ -11,22 +12,66 @@ def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
-    item = request.session.get('item', {})
-    if not item:
-        message.error(request, "No book in your cart now.")
-        return redirect(reverse('book'))
-    order_in_cart = order_contents(request)
-    total = order_in_cart['overall_total']
-    stripe_total = round(total * 100) 
-    stripe.api_key = stripe_secret_key
-    intent = stripe.PaymentIntent.create(
-        amount = stripe_total,
-        currency = settings.STRIPE_CURRENCY,
-    )
+    if request.method == "POST":
+        item = request.session.get('item', {})
+        form_data = {
+        "full_name": request.POST["full_name"],  
+        "email": request.POST["email"], 
+        "phone_number": request.POST["phone_number"], 
+        "address1": request.POST["address1"], 
+        "address2": request.POST["address2"], 
+        "postcode": request.POST["postcode"], 
+        "countries": request.POST["countries"],
+        }
 
-    print(intent)
-    
-    confirm_order = ConfirmOrder()
+        confirm_order = ConfirmOrder(form_data)
+        if confirm_order.is_valid():
+            order = confirm_order.save()
+            
+            for books_id, order_data in item.items():
+                try: 
+                    product = Product.objects.get(id=books_id)
+                    if isinstance(order_data, int):
+                        product = get_object_or_404(Product, pk=books_id)
+                        total += order_data * product.price
+                        product_count += order_data
+                        order_items.append({
+                            'books_id': books_id,
+                            'quantity': order_data,
+                            'product': product,
+                                
+                        })
+
+                    delivery = total * Decimal(settings.DELIVERY_PERCENTAGE / 100)
+                    overall_total = total + delivery
+                except Product.DoesNotExist():
+                    order.delete()
+                    return redirect(reverse('show_order'))
+            request.session["save-info"] = 'save-info' in request.POST
+            return redirect(reverse('checkout_success', 
+            args=[order.order_number]))
+        else:
+            message.error("Error with the inforamtion provided, please check the form.")
+
+            
+    else:
+
+        item = request.session.get('item', {})
+        if not item:
+            message.error(request, "No book in your cart now.")
+            return redirect(reverse('book'))
+        order_in_cart = order_contents(request)
+        total = order_in_cart['overall_total']
+        stripe_total = round(total * 100) 
+        stripe.api_key = stripe_secret_key
+        intent = stripe.PaymentIntent.create(
+            amount = stripe_total,
+            currency = settings.STRIPE_CURRENCY,
+        )
+
+        print(intent)
+        
+        confirm_order = ConfirmOrder()
 
     # if not stripe_public_key:
     #     message.warning(request, 'You forget to set your stripe public key.')
@@ -39,3 +84,13 @@ def checkout(request):
     }
 
     return render (request, template, context)
+
+
+def checkout_success(request, order_number):
+    """Handle request when checkout successfully"""
+
+    save-info = request.session.get("save-info")
+    order = get_object_or_404(Order, order_number = order_number)
+    message.success(request, 
+    f'Order successfully processed. Order number is {order_number}. \
+    A confirmation email will be send to {order.email}')
