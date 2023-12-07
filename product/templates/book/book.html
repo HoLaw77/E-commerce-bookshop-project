@@ -21,66 +21,7 @@
             </form>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <div class="dropdown">
-                <button onclick="showFunction()" class="dropbtn bg-dark text-white col-lg-4 mt-2">
-                    <i class="fa-solid fa-bars text-white"></i>
-                    <h6>
-                        Filter</h6>
-                </button>
-                <div id="dropdown-checkbox" , class="dropdown-filter">
-
-                    <span class="anchor">Select Genre</span>
-
-                    <ul>
-                        <li>
-                            <a href="{% url 'book' %}?genre=romancefiction">
-
-                                <p>
-
-                                    Romance fiction
-                                </p>
-                            </a>
-                            </label>
-                        </li>
-                        <li><input type="checkbox" name="genres" value=2 />Thriller fiction</li>
-                        <li><input type="checkbox" name="genres" />Detective fiction </li>
-                        <li><input type="checkbox" name="genres" />Classic </li>
-                        <li><input type="checkbox" name="genres" />Nonfiction</li>
-                        <li><input type="checkbox" />Sci-fi/Fantasy</li>
-                        <li><input type="checkbox" />Science</li>
-                        <li><input type="checkbox" />Social Science</li>
-                        <li><input type="checkbox" />Philosophy</li>
-                        <li><input type="checkbox" />Gender</li>
-                        <li><input type="checkbox" />Translated Fiction</li>
-                        <li><input type="checkbox" />Literary Fiction</li>
-
-                    </ul>
-
-                    <span class="anchor">Select Language</span>
-                    <ul class="items">
-                        <li><input type="checkbox" name="language" value="1" />
-                            English
-                        </li>
-                        <li><input type="checkbox" />German</li>
-                        <li><input type="checkbox" />Japanese </li>
-                        <li><input type="checkbox" />Chinese </li>
-                        <li><input type="checkbox" />Russian</li>
-                        <li><input type="checkbox" />Greece</li>
-                    </ul>
-
-                    <span class="anchor">Select Cover</span>
-                    <ul class="items">
-                        <li><input type="checkbox" name="cover" value="1" />Hard Cover </li>
-                        <li><input type="checkbox" name="cover" value="2" />Paperback</li>
-                        <li><input type="checkbox" name="cover" value="3" />Soft Cover</li>
-
-                    </ul>
-
-                </div>
-            </div>
-        </div>
+    
 
 
         {% if not books %}
@@ -158,24 +99,4 @@
 
 {% endblock %}
 
-{% block postloadjs %}
-<script type="text/javascript">
-    //code from w3school tutorial //
-    function showFunction() {
-        document.getElementById("dropdown-checkbox").classList.toggle("show");
-    }
 
-    window.onclick = function (event) {
-        if (!event.target.matches('.dropbtn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-filter");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    }
-</script>
-{% endblock %}
