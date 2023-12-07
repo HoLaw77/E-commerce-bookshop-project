@@ -53,7 +53,7 @@ def checkout(request):
 
         item = request.session.get('item', {})
         if not item:
-            message.error(request, "No book in your cart now.")
+            # message.error(request, "No book in your cart now.")
             return redirect(reverse('book'))
         order_in_cart = order_contents(request)
         total = order_in_cart['overall_total']
