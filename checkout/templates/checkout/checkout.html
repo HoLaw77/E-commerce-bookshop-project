@@ -97,7 +97,7 @@
                 </div>
         <div class="col-lg-12 mb-5">
             <p>Please fill out the form to complete your order.</p>
-            <form action="{% url 'checkout' %}" method="POST" id="orderpayment">
+            <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
                 <fieldset class="mb-3">
                     Contact Information
