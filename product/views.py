@@ -16,22 +16,6 @@ def show_book(request):
     genre = None
 
     if request.GET:   
-        # if "genre" in request.GET:
-        #     genres = request.GET['genre'].split(',')
-        #     genre = categories.filter(category__genre__in=genres)
-        #     genres = Category.objects.filter(genre__in=genres)
-            
-        #     if languages in request.GET:
-        #         filter = request.GET['languages']
-        #         if not filter:
-        #             return redirect(reverse('book'))
-        #     filters = Q(language__icontains=filter) 
-        #     books = books.filter(filters)
-        if "cover" in request.GET:
-            filter = request.GET['cover']
-            cover = books.filter(cover__in=filter)
-            filter = Product.objects.filter(cover__in=filter)
-            cover = books.filter(cover)        
         
         if 'q' in request.GET:
             query = request.GET['q']
