@@ -52,42 +52,14 @@ form.addEventListener('submit', function (ev) {
     card.update({ 'disabled': true });
     $('#submit-button').attr('disabled', true);
     $('#payment-form').fadeToggle(100);
-    var saveInfo = Boolean($('#id-save-info').attr('checked'));
-    var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
-    var postData = {
-        "csrfmiddlewaretoken": csrfToken,
-        'client_secret': clientSecret,
-        'safe-info': saveInfo,
-    }
+    
+    
     var url = '/checkout/cache_checkout_data/';
     $.post(url, postData).done(function () {
         stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: card,
-                billing_details: {
-                    name: $.trim(form.full_name.value),
-                    phone_number: $.trim(form.phone_number.value),
-                    email: $.trim(form.email.value),
-                    address: {
-                        address_line1: $.trim(form.address1.value),
-                        address_line2: $.trim(form.address2.value),
-                        postcode: $.trim(form.postcode.value),
-                        country: $.trim(form.countries.value),
-
-
-
-                    }
-                },
-                shipping_details: {
-                    name: $.trim(form.full_name.value),
-                    phone_number: $.trim(form.phone_number.value),
-                    address: {
-                        address_line1: $.trim(form.address1.value),
-                        address_line2: $.trim(form.address2.value),
-                        postcode: $.trim(form.postcode.value),
-                        country: $.trim(form.countries.value),
-                    }
-                },
+                
             }
 
         }).then(function (result) {
