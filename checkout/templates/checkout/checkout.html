@@ -100,13 +100,21 @@
             <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
                 <fieldset class="mb-3">
-                    Contact Information
+                    <strong>
+
+                        Contact Information
+                    </strong>
                 </fieldset>
                 {{confirm_order.full_name |  as_crispy_field }}
             
                 {{confirm_order.email | as_crispy_field }}
                 {{confirm_order.phone_number | as_crispy_field }}
-                <fieldset class="mb-3">Delivery Information </fieldset>
+                <fieldset class="mb-3">
+                    <strong>
+
+                        Delivery Information 
+                    </strong>
+                </fieldset>
                 {{confirm_order.address1 | as_crispy_field}}
                 {{confirm_order.address2 | as_crispy_field}}
                 {{confirm_order.postcode | as_crispy_field}}
