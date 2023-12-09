@@ -54,8 +54,7 @@ form.addEventListener('submit', function (ev) {
     $('#payment-form').fadeToggle(100);
     
     
-    var url = '/checkout/cache_checkout_data/';
-    $.post(url, postData).done(function () {
+    
         stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: card,
@@ -81,7 +80,7 @@ form.addEventListener('submit', function (ev) {
                 }
             }
         });
-    })}).fail(function () {
+    }).fail(function () {
         // just reload the page, the error will be in django messages
         location.reload();
 })
