@@ -1,6 +1,6 @@
 <h1>Traverse Book</h1>
 
-![logo](static/images/japan-red-cloud.png)
+![logo](static/image/documentation/logo.png)
 
 
 ![responsiveness_mobile](static/documentations/responsiveness_mobile.png)
