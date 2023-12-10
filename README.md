@@ -57,7 +57,7 @@
 
 <h3>Check Your Order button</h3>
 
-![check_your_order](static/documentations/check_your_order.png)
+![check_your_order](static/image/documentation/check_your_order.png)
 
 <h2>How to check out and make payment</h2>
 <li>User can check out by clicking the checkout button at the bottom of the order page.</li>
