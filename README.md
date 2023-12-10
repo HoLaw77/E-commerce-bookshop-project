@@ -76,7 +76,7 @@
 
 <h3>Checkout Success Page with the Order details rendered out</h3>
 
-![checkout_success](static/image/documentation/checkout_success.png)
+![checkout_success](static/image/documentation/payment_success.png)
 
 <h2>How to Delete and Edit Order</h2>
 <li>User can delete order by clicking the remove button in each product in order page. After clicking it will remove the product and stay in the order page.</li>
