@@ -10,7 +10,7 @@
                     <input class="form-control" type="text" name="q"
                         placeholder="Search book name, author's name, publisher or ISBN">
                     <button class="form-control bg-dark text-white" type="submit">
-                        <h6>
+                        <h6 class="title-text text-white">
                             Search
                             <i class="fa-solid fa-magnifying-glass text-white">
 
@@ -21,93 +21,152 @@
             </form>
         </div>
     </div>
-    
+
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 col-lg-3">
-                
-                
+            
+                <button class="btn btn-dark dropdown-toggle col-lg-12 col-lg-3
+            mt-4" 
+                type="button" data-toggle="dropdown">
+                    <h5 class="title-text text-white">Sort by</h5>
+                </button>
+                <ul class="dropdown-menu">
+                    <li>
 
-            </div>
+                        <a href="{% url 'book' %}">
+                            <h5 class="title-text text-dark">
 
-        </div>
+                                None
+                            </h5>
+                        </a>
+                    </li>
+                    <li>
 
-    </div>    
+                        <a href="{% url 'book' %}?sort=price&direction=asc">
+                            <h5 class="title-text text-dark">
+                            Price (low to high)
+                            </h5>
+                        </a>
 
-        {% if not books %}
-        <div class="books-container col-lg-12 col-lg-4">
-            <div class="row mt-5 mb-7">
-                <div class="col-lg-12 col-lg-3 mb-5 display=block">
-                    <h1 class="title-text">Sorry, no result found. Please search again.</h1>
-                </div>
-                <div class="col-lg-12 col-lg-3 display=block">
-                    <a href="{% url 'book' %}">
-                        <button class="col-lg-4 bg-dark text-white">
-                            <p>
-                                Go back
+                    </li>
+                    <li>
 
-                            </p>
-                        </button>
-                    </a>
-                </div>
-            </div>
-        </div>
+                        <a href="{% url 'book' %}?sort=price&direction=desc">
+                            <h5 class="title-text text-dark">
+                            Price (high to
+                            low)
+                            </h5>
+                        </a>
+                    </li>
+                    <li>
 
-        {% endif %}
+                        <a href="{% url 'book' %}?sort=name&direction=asc">
+                            <h5 class="title-text text-dark">
+                            Name (A-Z)
+                            </h5>
+                        </a>
+                    </li>
+                    <li>
 
-        {% if books %}
-        <div class="row mt-5 mb-4">
-            <div class="books-container ">
+                        <a href="{% url 'book' %}?sort=name&direction=desc">
+                            <h5 class="title-text text-dark">
+                            Name (Z-A)
+                            </h5>
+                        </a>
+                    </li>
+                </ul>
 
-                <div class="row">
+            
 
-                    {% for book in books %}
-                    <div class="col-sm-5, col-md-4, col-xl-3, col-lg-3
-                    {% if books|length == 1 %} col-lg-12 {% endif %}">
-                        <div class="card h-200 border-0">
 
-                            {% for image in images %}
-                            {% if image.product.name == book.name %}
-                            <a href="{% url 'book_detail' book.id %}">
-                                <div class="card h-5 w-5 border-0">
 
-                                <img class="card-img" src="{{image.image_url}}">
-                                </div>
-                            </a>
-                            {% endif %}
-                            {% endfor %}
-                            <div class="card-body">
-                                <h5 class="md-0">{{book.name}}</h5>
 
-                            </div>
-                            <div class="card-body">
-                                <p>Author: {{book.author}}</p>
-                            </div>
-                            <div class="card-body">
-                                <p>Publisher: {{book.publisher}}</p>
-                            </div>
-                            <div class="card-body">
-                                <p>
-                                Year of Publication: {{book.year_of_publication}}
-                                </p>
-                            </div>
-
-                            <div class="card-body font-weight-bold">
-                                <p>Price: ${{book.price}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-                {% endif %}
-            </div>
         </div>
 
     </div>
+
+    {% if not books %}
+    <div class="books-container col-lg-12 col-lg-4">
+        <div class="row mt-5 mb-7">
+            <div class="col-lg-12 col-lg-3 mb-5 display=block">
+                <h1 class="title-text">Sorry, no result found. Please search again.</h1>
+            </div>
+            <div class="col-lg-12 col-lg-3 display=block">
+                <a href="{% url 'book' %}">
+                    <button class="col-lg-4 bg-dark text-white">
+                        <p>
+                            Go back
+
+                        </p>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {% endif %}
+
+    {% if books %}
+    <div class="row mt-5 mb-4">
+        <div class="books-container ">
+
+            <div class="row">
+
+                {% for book in books %}
+                <div class="col-sm-5, col-md-4, col-xl-3, col-lg-3
+                    {% if books|length == 1 %} col-lg-12 {% endif %}">
+                    <div class="card h-200 border-0">
+
+                        {% for image in images %}
+                        {% if image.product.name == book.name %}
+                        <a href="{% url 'book_detail' book.id %}">
+                            <div class="card h-5 w-5 border-0">
+
+                                <img class="card-img" src="{{image.image_url}}">
+                            </div>
+                        </a>
+                        {% endif %}
+                        {% endfor %}
+                        <div class="card-body">
+                            <h5 class="md-0 title-text">
+                                <strong>
+
+                                    {{book.name}}
+                                </strong>
+                            </h5>
+
+                        </div>
+                        <div class="card-body">
+                            <p class="title-text">Author: {{book.author}}</p>
+                        </div>
+                        <div class="card-body">
+                            <p class="title-text">Publisher: {{book.publisher}}</p>
+                        </div>
+                        <div class="card-body">
+                            <p class="title-text">
+                                Year of Publication: {{book.year_of_publication}}
+                            </p>
+                        </div>
+
+                        <div class="card-body font-weight-bold">
+                            <p class="title-text">
+                                <strong>
+
+                                    Price: ${{book.price}}
+                                </strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
 
 </div>
 
 
 {% endblock %}
-
-
