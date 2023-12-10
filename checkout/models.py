@@ -63,7 +63,7 @@ class OrderDetail(models.Model):
     )
     product = models.ForeignKey(
         Product, on_delete=models.CASCADE, related_name='order_detail', 
-        default = ''
+        default = 'null'
     )
     quantity = models.IntegerField(default=0)
     item_total = models.DecimalField(max_digits=6, decimal_places=2, null=False,
