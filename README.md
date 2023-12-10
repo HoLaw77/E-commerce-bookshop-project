@@ -39,6 +39,11 @@
 
 ![search_bar](static/image/documentation/search_bar.png)
 
+<h3>Sort book by name or price in ascending or descending order at book page
+</h3>
+
+![sort](static/image/documentation/sort.png)
+
 <h3>Add to cart button in book detail page</h3>
 
 ![add_to_cart_button](static/image/documentation/add_to_cart.png)
