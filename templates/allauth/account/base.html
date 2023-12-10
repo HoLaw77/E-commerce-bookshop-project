@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+
+    <div class="row">
+        <div class="col-lg-12 col-lg-6">
+            <div class="allauth-form-inner-content">
+                {% block account_content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    {% endblock %}
