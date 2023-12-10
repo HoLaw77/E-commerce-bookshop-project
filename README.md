@@ -64,17 +64,19 @@
 <li>It will lead the user to the checkout page where they can view their order displayed at the top of the page and a form for them to input their full name, email, phone number and address date. At the bottom of the page, there is a card payment field which enables them to type their card number, CVC code and the expiration date. </li>
 <li>After submitting the payment form, there will be an authentication screen pops out by the Stripe 3D authentication to ensure that the payment is authenticated by the user. If the user declines the payment, it will lead them back to the checkout page with the form filled</li>
 
-<li>If the payment is successful, it will lead the user to the checkout_success page where they will see the confirmation of the payment and the order number generated at the top of the page, with the order summary displayed again. They can also click continue shopping if they want to shop for more.</li>
+<li>If the payment is successful, it will lead the user to the checkout_success page where they will see the confirmation of the payment and the order number generated at the top of the page, with the order summary displayed again. The billing information is also displayed such as the order total ,delivery cost, and overall total. They can also click continue shopping if they want to shop for more.</li>
 
 <h3>Payment form</h3>
 
 ![payment_form](static/image/documentation/payment_form.png)
 
 <h3>Checkout authentication by Stripe</h3>
-![3d_authentication](static/documentations/3d_authentication.png)
 
-<h3>Checkout Success Page </h3>
-![checkout_success](static/documentations/checkout_success.png)
+![3d_authentication](static/image/documentation/3d_authentication.png)
+
+<h3>Checkout Success Page with the Order details rendered out</h3>
+
+![checkout_success](static/image/documentation/checkout_success.png)
 
 <h2>How to Delete and Edit Order</h2>
 <li>User can delete order by clicking the remove button in each product in order page. After clicking it will remove the product and stay in the order page.</li>
