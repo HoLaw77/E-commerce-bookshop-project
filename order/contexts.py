@@ -24,6 +24,7 @@ def order_contents(request):
                 print("Yes")
                 # If the product is found, update its quantity
                 existing_item['quantity'] += order_data
+                print(existing_item)
             else:
                 print('no')
                 # Otherwise, add a new entry
