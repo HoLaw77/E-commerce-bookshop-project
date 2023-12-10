@@ -4,7 +4,7 @@ import uuid
 from django.conf import settings
 from django_countries.fields import CountryField
 from product.models import Product, ProductImage, Language, Category
-from customer.models import Profile, Book_Interest
+from customer.models import Profile, BookInterest
 # Create your models here
 
 

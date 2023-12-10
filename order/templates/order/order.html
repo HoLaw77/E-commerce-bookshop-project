@@ -41,6 +41,8 @@
                                 <strong>
 
                                     Price: ${{item.product.price}}
+                                    id: ${{item.product.id}}
+                                    pk: ${{item.product.pk}}
                                 </strong>
                             </p>
 
@@ -52,7 +54,7 @@
                     <div class="row">
                         <div class="card-body col-lg-4" style="max-width: 540px;">
 
-                            <a class="remove-book" id="remove_{{item.item_id}}">
+                            <a class="remove-book" id="remove_{{item.product.id}}">
                                     <h5 class="title-text text-danger">
                                         Remove Book
                                     </h5>
@@ -141,15 +143,17 @@
 {{ block.super }}
 <script type="text/javascript">
     //adjust product quantity when submitting form//
+    var itemId = $(".remove-book").attr('id').split('remove_')[1]
 
-    $()
+    console.log('item_id', itemId)
 
     //remove product after clicking in html//
 
     $('.remove-book').click(function (e) {
-        var csrfToken = "{{ csrf_token }}";
+        var csrfToken = "{{ csrf_token }}"; 
         var itemId = $(this).attr('id').split('remove_')[1];
-        var url = `/order/remove/${itemId}/`;
+        console.log('item_id', itemId)
+        var url = `/order/remove_order/${itemId}`;
         var data = { 'csrfmiddlewaretoken': csrfToken };
 
         $.post(url, data)
