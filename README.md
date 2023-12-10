@@ -39,9 +39,9 @@
 
 ![search_bar](static/image/documentation/search_bar.png)
 
-<h3>Add to cart button</h3>
+<h3>Add to cart button in book detail page</h3>
 
-![add_to_cart_button](static/documentations/add_to_cart.png)
+![add_to_cart_button](static/image/documentation/add_to_cart.png)
 
 <br>
 <br>
