@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 # from address.models import AddressField
 from django_countries.fields import CountryField
 # Create your models here.
@@ -30,6 +32,15 @@ class Profile(models.Model):
     address2 = models.CharField(max_length=64, null=True, blank=True)
     postcode = models.CharField(max_length=20, null=True, blank=True)
     interest = models.ManyToManyField(Book_Interest)
+
+    def __str__(self):
+        return self.user.username
+
+@receiver(post_save, sender=User)
+def create_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+        instance.profile.save()
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
