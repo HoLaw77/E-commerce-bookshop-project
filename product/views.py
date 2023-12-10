@@ -12,11 +12,20 @@ def show_book(request):
     query = None
     language = Language.objects.all()
     images = ProductImage.objects.all()
-    filter = None
-    genre = None
+    sort = None
 
     if request.GET:   
-        
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            if sortkey == 'name':
+                sortkey = 'lower_name'
+                products = products.annotate(lower_name=Lower('name'))
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+            products = products.order_by(sortkey)
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -25,12 +34,13 @@ def show_book(request):
 
             queries = Q(name__icontains=query) | Q(author__icontains=query)| Q(isbn__icontains=query)| Q(publisher__icontains=query)
             books = books.filter(queries)
+            current_sort = f'{sort}_{direction}'
+
 
     context = {
         'books': books,
         'images': images,
-        
-        
+        'current_sort': sort,
         'search': query,
         
     }
