@@ -51,9 +51,9 @@
 
 <br>
 
-<h2>How to Check Order</h2>
+<h2>How to view Order</h2>
 
-<li>User can click on the "Check Your Order" button at the top right corner of the page to view and amend orders at the order.html page.</li>
+<li>User can click on the "View Your Order" button at the top right corner of the page to view and amend orders at navigation bar.</li>
 
 <h3>Check Your Order button</h3>
 
