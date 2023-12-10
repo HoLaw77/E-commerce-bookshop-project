@@ -37,7 +37,7 @@
 
 <h3>Search Bar at book page</h3>
 
-![search_bar](static/documentations/search_bar.png)
+![search_bar](static/image/documentation/search_bar.png)
 
 <h3>Add to cart button</h3>
 
