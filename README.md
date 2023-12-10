@@ -46,7 +46,8 @@
 <br>
 <br>
 <h3>Order page, checkout button and keep shopping button</h3>
-![order_page](static/documentations/order_page.png)
+
+![order_page](static/image/documentation/cart.png)
 
 <br>
 
