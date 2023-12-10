@@ -18,7 +18,7 @@
 
 <li>User can choose to sign in or register first, then they can navigate to the book page and make their order by clicking into the book_detail page. It will lead them to the details of the books such as authors, ISBN, publisher, page numbers. They can make their order by clicking the add to cart button.</li> 
 
-<li>User can also filter by searching the book they like by typing the name, author, or other keywords in the search bar.</li>
+<li>User can also filter by searching the book they like by typing the name, author, or other keywords in the search bar and clicking on the sort dropdown to sort the book by name or price in ascending or descending order. </li>
 
 <li>After clicking the add to cart button, it will lead them to the order page which they can see the price of the book and the total price after adding the delivery cost which is 5% of the total price. There is also a button for them to proceed to checkout if they want. Otherwise, they can head back to the book page by clicking the button “Keep” shopping.</li>
 
