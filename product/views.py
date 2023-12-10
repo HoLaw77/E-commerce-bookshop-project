@@ -13,7 +13,8 @@ def show_book(request):
     language = Language.objects.all()
     images = ProductImage.objects.all()
     sort = None
-
+    direction = None
+    
     if request.GET:   
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
