@@ -68,7 +68,7 @@
 
 <h3>Payment form</h3>
 
-![payment_form](static/documentations/payment_form.png)
+![payment_form](static/image/documentation/payment_form.png)
 
 <h3>Checkout authentication by Stripe</h3>
 ![3d_authentication](static/documentations/3d_authentication.png)
