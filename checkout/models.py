@@ -16,7 +16,7 @@ class Order(models.Model):
         null=True,
         blank=True,
         related_name='orders')
-    countries = CountryField(blank_label = "Country", null=False, blank=False, default="USA")
+    country = CountryField(blank_label = "Country", null=False, blank=False, default="USA")
     email = models.CharField(max_length=100, null=True, blank=True)
     phone_number = models.CharField(max_length = 15, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
