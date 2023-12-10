@@ -82,8 +82,27 @@ main{
     font-size: 200%;
 }
 
+.submit-button{
+    margin-left: 720px;
+    margin-top: 100px;
+    
+    height: 100%;
+    
+}
 
+.login-button{
+    
+    margin-top: 100px;
+}
 
+.login-form{
+    margin-left: 500px;
+}
+
+.signup-form{
+    margin-left: 1000px;
+    margin-top: 100px;
+}
 
 @media only screen and (max-width: 900px){
     .index-text{
@@ -93,6 +112,30 @@ main{
         font-family: 'Gideon Roman';
         color: black;
         background-color: white;
+    }
+
+    .submit-button{
+        margin-left: 250px;
+        margin-top: 100px;
+        
+        
+    }
+    .signup-button{
+        margin-right: 100px;
+        margin-top: 10px;
+    }
+    .login-button{
+        margin-left: 150px;
+        margin-top: 100px;
+    }
+
+    .login-form{
+        margin-left: 100px;
+    }
+
+    .signup-form{
+        margin-left: 200px;
+        margin-top: 100px;
     }
 }
 

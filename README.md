@@ -24,11 +24,11 @@
 
 <h3>Sign In page</h3>
 
-![sign_in](static/documentations/sign_in.png)
+![sign_in](static/image/documentation/sign_in.png)
 
 <h3>Sign Up page</h3>
 
-![sign_up](static/documentations/sign_up.png)
+![sign_up](static/image/documentation/sign_up.png)
 
 <h3>Navigation Bar at home page</h3>
 
@@ -116,7 +116,7 @@
 ![agile_example](static/documentations/agile_example.png)
 
 <li>I have follow the agile approach in this project by setting up various issues to improve my project throughout the development process</li>
-<li>[add filter link??????] </li>
+
 
 
 <h2>Testing</h2>

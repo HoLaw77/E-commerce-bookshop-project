@@ -5,7 +5,7 @@
     {% trans "Sign In" %}
 {% endblock head_title %}
 {% block content %}
-    <h1 class="title-text text-center mt-4">
+    <h1 class="title-text text-center  mt-4">
 
         {% trans "Sign In" %}
     </h1>
@@ -15,7 +15,8 @@
     <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
     </p>
     {% url 'account_login' as login_url %}
-    <form class="login mt-5 col-md-7 d-flex flex-column" method="POST" action="{% url 'account_login' %}">
+    <form class="login mt-5 col-md-7 d-flex flex-column login-form" method="POST" 
+    action="{% url 'account_login' %}">
         {% csrf_token %}
         {{ form | crispy }}
         {% if redirect_field_value %}
@@ -23,10 +24,13 @@
         value="{{ redirect_field_value }}"  />
         {% endif %}
         <div class="mx-auto">
-        <button class="primaryAction title-text col-lg-12 col-lg-4" type="submit"> 
+        <button class=" btn-dark login-button title-white title-text
+        col-lg-12 col-lg-4" type="submit"> 
         
+            <h3>
 
-            Sign In
+                Sign In
+            </h3>
         
         </button>
         </div>

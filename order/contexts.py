@@ -7,17 +7,18 @@ def order_contents(request):
     order_items = []
     total = 0
     product_count = 0
-    overall_total = 0 
-    item = request.session.get('item', {})
-    images = ProductImage.objects.all()
+    overall_total = 0
+    bag = request.session.get('bag', {})
+    # item = request.session.get('item', {})
+    # images = ProductImage.objects.all()
 
-    for books_id, order_data in item.items():
+    for books_id, order_data in bag.items():
         print("books_id, order_data", books_id, order_data)
         if isinstance(order_data, int):
             product = get_object_or_404(Product, pk=books_id)
-            # print("product", product)
-            # total += order_data * product.price
-            # product_count += order_data
+            print("product", product)
+            total += order_data * product.price
+            product_count += order_data
             existing_item = next((item for item in order_items if item['product'].id == int(books_id)), None)
             print('existing_item',existing_item)
             if existing_item:
@@ -44,10 +45,9 @@ def order_contents(request):
         "item_items": order_items,
         "total": total,
         "product_count": product_count,
-        "images": images,
+        # "images": images,
         "overall_total": overall_total,
-        
-        
     }
+    print("!!!!!!!!!!!!context", context)
 
     return context
