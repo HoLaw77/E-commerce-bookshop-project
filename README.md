@@ -32,7 +32,7 @@
 
 <h3>Navigation Bar at home page</h3>
 
-![navigation_bar](static/documentations/navigation_bar.png)
+![navigation_bar](static/image/documentation/topnav.png)
 
 <h3>Search Bar at book page</h3>
 
