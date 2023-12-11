@@ -20,7 +20,8 @@ def add_order(request, books_id):
     product = get_object_or_404(Product, id=books_id)
     quantity = int(request.POST.get('quantity'))
     bag = request.session.get('bag', {})
-    item_items = bag.get('item_items', [])
+    print(bag)
+    item_items = bag.get('item_items')
     print('item_items', item_items)
     print('product: ', product)
     print("quantity: ", quantity)
@@ -30,7 +31,8 @@ def add_order(request, books_id):
     print(bag)
     print("list(bag.keys())", list(bag.keys()))
 
-    # if str(books_id) in list(bag.keys()):
+    # if not str(books_id) in list(bag.keys()):
+    bag[books_id] = quantity
     #     print("Yes it is in the bag")
     #     bag[str(books_id)]+= quantity
     #     print("bag", bag)
@@ -38,7 +40,6 @@ def add_order(request, books_id):
     #     # messages.success(request, f'Added {product.name} to cart')
     # else: 
     #     print("Nooooo")
-    bag[books_id] = quantity
     request.session['bag'] = bag
     
     print(bag)
@@ -65,7 +66,7 @@ def adjust_order(request, item_id):
     if request.method == "POST":
         if quantity > 0:
             bag[item_id] = quantity
-            messages.success(request, f'Adjusted {product.name} quantity')
+            # messages.success(request, f'Adjusted {product.name} quantity')
             return render (request, 'order/order.html')
         else: 
             item.pop(item_id)

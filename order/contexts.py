@@ -25,18 +25,20 @@ def order_contents(request):
                 print("Yes")
                 # If the product is found, update its quantity
                 existing_item['quantity'] += order_data
-                print(existing_item)
+                for item in order_items:
+                    if item['product'].id == int(books_id):
+                        item['quantity'] += order_data
             else:
                 print('no')
                 # Otherwise, add a new entry
                 total += order_data * product.price
                 product_count += order_data
-            order_items.append({
-                'books_id': books_id,
-                'quantity': order_data,
-                'product': product,
-                
-            })
+                order_items.append({
+                    'books_id': books_id,
+                    'quantity': order_data,
+                    'product': product,
+                    
+                })
 
         delivery = total * Decimal(settings.DELIVERY_PERCENTAGE / 100)
         overall_total = total + delivery

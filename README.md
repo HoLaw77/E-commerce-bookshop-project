@@ -56,6 +56,21 @@
 
 <br>
 
+<h2>Profile page</h2>
+
+<li>The profile is only accessible by user who has account and logged in as clicking in the "My profile" link in the bottom of navigation bar.</li>
+<li>User can also edit their profile and share their book interest after they have created an account.</li>
+<li>After they have submitted the form. All the information will be saved and will be displayed whenever they are logged in for them to edit.<li>
+
+<h3>My Profile in nav bar</h3>
+
+![my_profile](static/image/documentation/my_profile.png)
+
+
+<h3>Profile and Book Interest form</h3>
+
+![profile_page](static/image/documentation/profile.png)
+
 <h2>How to view Order</h2>
 
 <li>User can click on the "View Your Order" button at the top right corner of the page to view and amend orders at navigation bar.</li>
@@ -95,11 +110,11 @@
 <h2>Development</h2>
 <h3> Original Flowchart and Wireframe</h3>
 
-![wire_frame_1](static/documentations/wire_frame_1.png)
-![wire_frame_2](static/documentations/wire_frame_2.png)
-![wire_frame_3](static/documentations/wire_frame_3.png)
+![database_structure](static/documentations/database_structure.png)
 
-![flow_chart](static/documentations/Flowchart%20Template.png)
+<p>Checkout app and Order app was added later during the coding process.</p>
+
+![flow_chart](static/image/documentation/flowchart.png)
 
 <li>In my original setting, I would like to offer user choices in filtering the books according to genre, covers, and, languages.</li>
 <li>After doing more research and building the page, I realise that it would be too complicated so I simplified by only keeping the search bar.</li>
@@ -124,8 +139,6 @@
 <li>I confirmed the project is responsive, look goods and function on all standard size screen using devtool device tool bar.</li>
 <li>Code tested in my local terminal and confirmed using coverage.</li>
 
-![Python_Automated_Test_coverage_Report](static/documentations/python_coverage_test_report.png)
-<p>Coverage report for python automated test</p>
 
 <h2>Bugs</h2>
 
@@ -167,15 +180,11 @@
 
 <li>Model structure has been advised by my mentor Juliia Konovalov. Many Thanks for his patient and helpful guidance.</li>
 
-<li>checkout app and templates, filter and searching, payment structure are inspired by tutorial of Boutique Ado project in Code Institute course.
+<li> adjusting and deleting order, checkout app and templates, filter and searching, payment structure are inspired by tutorial of Boutique Ado project in Code Institute course.
 
-[Boutique_Ado_Github](https://docs.google.com/document/d/1P5Mzkvzm3HUMrMgABn1KwU_pHnR5n4TUX8rHKB-9CMA/edit)
+[Boutique_Ado_Github]( https://github.com/Code-Institute-Solutions/boutique_ado_v1/tree/250e2c2b8e43cccb56b4721cd8a8bd4de6686546)
 </li>
 
-<li>Edit and delete order button is inspired by the handout of Hello Django project in Code Institute course
-
-[Hello Django: Part 7: Modifying Data](https://docs.google.com/document/d/1RNDHMuQEBJ8if9XYR1WLjNJx_Z4Nad-NarjRVFrC0gQ/edit#heading=h.hvy9tw74f1o0)
-</li>
 
 <li>testing format has been inspired by handout of Hello Django project in Code Institute modules
 
@@ -187,23 +196,38 @@
 <h3>Media</h3>
 
 <h4>Index.html</h4>
-<p>https://www.pinterest.com/pin/292593307016180845/</p>
-
+<p>https://pxhere.com/en/photo/105434/</p>
+<p>https://toistudent.timesofindia.indiatimes.com/news/bookmark/a-reader-lives-a-thousand-lives/5748.html#:~:text=%22A%20reader%20lives%20a%20thousand,kept%20close%20to%20my%20heart.</p>
 
 <h4>book.html</h4>
-<p>https://www.flickr.com/photos/o_0/41785994071</p>
-<p>https://www.flickr.com/photos/95268887@N00/2392523070</p>
-<p>https://www.flickr.com/photos/huixuan/1350811859/</p>
-<p>https://www.pinterest.com/pin/266275396692800295/</p>
-<p>https://pleasurepalate.blogspot.com/2009/02/im-in-mood-for-soup.html</p>
-<p>https://www.flickr.com/photos/62942199@N08/48023829601/</p>
-<p>https://www.flickr.com/photos/mmm-yoso/44764296142/</p>
-<p>https://www.flickr.com/photos/62942199@N08/33497523872</p>
-<p>https://www.recetasjaponesas.com/2015/05/gyoza.html</p>
-<p>https://www.kampustani.com/teknologi-penanganan-pasca-panen-kedelai/</p>
-<p>https://www.dream.co.id/culinary/resep-yakitori-sate-kulit-ayam-manis-ala-jepang-200625r.html</p>
-<p>https://dude4food.blogspot.com/2016/11/a-tenya-christmas-with-tenya-tempura.html</p>
-<p>https://www.angsarap.net/2014/10/28/kimchi/</p>
-<p>https://michaeltoa.com/japanese-fried-chicken-chicken-karaage-5c52c05e4805?gi=3f92a80ddfa5</p>
 
 
+<p>https://www.amazon.co.uk/Runaway-Vintage-International-Alice-Munro/dp/1400077915</p>
+<p>https://www.amazon.co.uk/Poetics-Penguin-Classics-Aristotle-ebook/dp/B002RI92L6</p>
+<p>https://www.amazon.co.uk/Communist-Manifesto-introduction-Varoufakis-Classics/dp/1784873691</p>
+<p>https://www.ebay.co.uk/itm/394132027496</p>
+<p>https://www.amazon.co.uk/Hamlet-Publisher-Yale-University-Press/dp/B004R97PB2</p>
+<p>https://www.amazon.co.uk/%E5%80%A6%E6%80%A0%E7%A4%BE%E6%9C%83-Traditional-Chinese-%E9%9F%93%E7%82%B3%E5%93%B2-ebook/dp/B081GY35YC</p>
+<p>https://www.abebooks.co.uk/book-search/author/w-h-d-adams/</p>
+<p>https://www.amazon.co.uk/Photography-Penguin-Modern-Classics-ebook/dp/B00P1SOF70</p>
+<p>https://www-origin.abebooks.com/servlet/BookDetailsPL?bi=30826078551&searchurl=rr%3Don%26fe%3Don%26ds%3D10%26sortby%3D17%26isbn%3D9780394743646&cm_sp=msrp-_-msrpdesc-_-bdp</p>
+<p>https://www.abebooks.co.uk/9781852244132/New-Collected-Poems-Winner-2011-1852244135/plp</p>
+<p>https://www.ebay.co.uk/p/90344570</p>
+<p>https://www.amazon.co.uk/Story-Art-Pocket-Gombrich-2006-10-07/dp/B00CF5WARY</p>
+<p>https://www.amazon.co.uk/Histoire-beaut%C3%A9-Umberto-Eco/dp/2081243288</p>
+<p>https://www.amazon.co.uk/Less-Than-One-Selected-Twentieth/dp/0141180110</p>
+<p>https://www.amazon.co.uk/Time-Mother-Ocean-Vuong/dp/1787333841</p>
+<p>https://www.ebay.co.uk/itm/304671395331</p>
+<p>https://www.amazon.co.uk/Mirror-Dance-Catriona-McPherson/dp/152933795X</p>
+<p>https://www.amazon.co.uk/King-Lear-Arden-Shakespeare-William/dp/1903436591</p>
+<p>https://www.amazon.co.uk/Gender-Trouble-Routledge-Classics-Judith/dp/0415389550</p> 
+<p>https://www.amazon.co.uk/Gaga-Feminism-Gender-Normal-Action/dp/0807010979
+</p>
+<p>https://www.amazon.co.uk/Dracula-Macmillan-Collectors-Library-Stoker/dp/1909621625
+</p>
+<p>https://www.amazon.co.uk/Left-Hand-Darkness-S-F-MASTERWORKS-ebook/dp/B01NCU4VNT
+</p>
+<p>https://www.amazon.co.uk/Illustrated-Brief-History-Time/dp/0593077180
+</p>
+<p>https://www.amazon.co.uk/Never-Let-Me-Kazuo-Ishiguro/dp/0571258093
+</p>
