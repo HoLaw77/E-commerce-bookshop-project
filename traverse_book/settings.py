@@ -28,7 +28,7 @@ CSRF_TRUSTED_ORIGINS = ['https://8000-holaw77-ecommercebooksh-51hyig88fec.ws-eu1
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG") == "True"
 
 ALLOWED_HOSTS = ['8000-holaw77-ecommercebooksh-51hyig88fec.ws-eu106.gitpod.io', 'traverse-book-6b6199e25c96.herokuapp.com', 'https://traverse-book-6b6199e25c96.herokuapp.com' 'localhost']
 
@@ -70,6 +70,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'traverse_book.urls'
@@ -214,14 +215,7 @@ else:
     EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASS")
     DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_HOST_USER")
     
-    CHANNEL_LAYERS = {
-        'default': {
-            'BACKEND': 'channels_redis.core.RedisChannelLayer',
-            'CONFIG': {
-                "hosts": [(os.environ.get("REDIS_URL"))],
-            },
-        },
-    }
+    
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
     
