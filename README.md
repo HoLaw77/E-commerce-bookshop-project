@@ -137,7 +137,7 @@
 <h2>Testing</h2>
 <li>I tested that this page works in different browser such as: Chrome, Microsoft-edge, Firefox.</li>
 <li>I confirmed the project is responsive, look goods and function on all standard size screen using devtool device tool bar.</li>
-<li>Code tested in my local terminal and confirmed using coverage.</li>
+
 
 
 <h2>Bugs</h2>
@@ -148,12 +148,8 @@
 
 <li>When I am building the order.html, I cannot render the order to the template. After checking with mentor, I realise the problem is in the context because I previously added the order model in the Order app which confused the Django with the context tag “order” which I used to render the order in order.html. Therefore, I changed the context tag to item and moved the order model to checkout app, it has become available since then.</li>
 
-<h2>Validation Testing</h2>
-<li>HTML: No error was found using official W3C Validator.</li>
-<li>CSS: No error was found using official W3C Validator.</li>
-<li>Accesssibility: I confirm the design and layout of the page is easy to read and accessible by running it through lighthouse in devtools.
-</li>
-<li>PEP8: No Errors return from https://pep8ci.herokuapp.com/# </li>
+
+
 
 ![lighthouse](static/image/documentation/lighthouse.png)
 <h2>Deployment</h2>
@@ -180,7 +176,7 @@
 
 <li>Model structure has been advised by my mentor Juliia Konovalov. Many Thanks for his patient and helpful guidance.</li>
 
-<li> adjusting and deleting order, checkout app and templates, filter and searching, payment structure are inspired by tutorial of Boutique Ado project in Code Institute course.
+<li> adjusting and deleting order, checkout app, stripe payment and templates, filter and searching, payment structure are inspired by tutorial of Boutique Ado project in Code Institute course.
 
 [Boutique_Ado_Github]( https://github.com/Code-Institute-Solutions/boutique_ado_v1/tree/250e2c2b8e43cccb56b4721cd8a8bd4de6686546)
 </li>
