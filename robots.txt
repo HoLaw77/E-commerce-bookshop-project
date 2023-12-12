@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://traverse-book-6b6199e25c96.herokuapp.com/sitemap.xml
