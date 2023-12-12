@@ -128,7 +128,7 @@
 
 <h3>Agile approach in development </h3>
 
-![agile_example](static/documentations/agile_example.png)
+![agile_example](static/image/documentation/agile_example.png)
 
 <li>I have follow the agile approach in this project by setting up various issues to improve my project throughout the development process</li>
 
