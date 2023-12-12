@@ -3,14 +3,14 @@
 ![logo](static/image/documentation/logo.png)
 
 
-![responsiveness_mobile](static/documentations/responsiveness_mobile.png)
-![responsiveness_desktop](static/documentations/responsiveness_desktop.png)
+![responsiveness_mobile](static/image/documentation/responsive_mobile.png)
+![responsiveness_desktop](static/image/documentation/responsive_desktop.png)
 
 <p>Note: I have attempted to use amiresponsive but were unable to without a https url. so I used screenshot from chrome to show responsiveness</p>
 
 <p>
 
-[Traverse Book](https://ramensushibar707-cdc30d46d9dd.herokuapp.com/) is a full-stack project that enables user to make order and payment on books of different genres, languages, and cover.
+[Traverse Book](https://traverse-book-6b6199e25c96.herokuapp.com/) is a full-stack project that enables user to make order and payment on books of different genres, languages, and cover.
 
 </p>
 
@@ -155,7 +155,7 @@
 </li>
 <li>PEP8: No Errors return from https://pep8ci.herokuapp.com/# </li>
 
-![lighthouse](static/documentations/lighthouse_testing.png)
+![lighthouse](static/image/documentation/lighthouse.png)
 <h2>Deployment</h2>
 
 <p>The page is deployed using heroku, following the below steps:</p>
@@ -171,7 +171,7 @@
 <li>Set The SECRET_KEY in setting.py</li>
 <li>Once the link is deployed, the link is generated</li>
 
-<p>The link is below https://ramensushibar707-cdc30d46d9dd.herokuapp.com/</p>
+<p>The link is below https://traverse-book-6b6199e25c96.herokuapp.com/</p>
 
 
 <h2>Credit</h2>

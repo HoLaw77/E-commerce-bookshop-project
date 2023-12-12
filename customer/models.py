@@ -12,7 +12,9 @@ class Profile(models.Model):
     user = models.OneToOneField(
         User,
         on_delete=models.CASCADE,
-        null=True
+        null=True,
+        blank=True,
+        related_name='profile'
     )
     full_name = models.CharField(max_length=100, null=True, blank=True)
     country = CountryField(blank_label = "Country", null=False, blank=False, default="USA")
