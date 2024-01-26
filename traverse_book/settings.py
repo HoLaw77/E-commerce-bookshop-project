@@ -34,7 +34,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG") == "True"
 
-ALLOWED_HOSTS = ['8000-holaw77-ecommercebooksh-51hyig88fec.ws-eu106.gitpod.io', 'traverse-book-6b6199e25c96.herokuapp.com', 'https://traverse-book-6b6199e25c96.herokuapp.com' 'localhost']
+ALLOWED_HOSTS = ['8000-holaw77-ecommercebooksh-51hyig88fec.ws-eu106.gitpod.io', 
+'ci-project5-4ad812effe24.herokuapp.com', 'localhost']
 
 
 
